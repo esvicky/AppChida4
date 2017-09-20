@@ -1,0 +1,9 @@
+node_modules/
+.expo/
+npm-debug.*
+.idea/
+.DS_Store
+test-report.xml
+
+src/Model.js
+rules.json
