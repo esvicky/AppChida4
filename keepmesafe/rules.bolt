@@ -3,39 +3,38 @@ path /users/{uid} is User {
     write() { isCurrentUser(uid) }
 }
 
-type Lists extends List[] {}
-type Tasks extends Task[] {}
-type ListItems extends ListItem[] {}
+type Members extends Member[] {}
+type Polices extends Police[] {}
 type Participants extends Participant[] {}
 
 type User {
     profile: Profile,
-    lists: Lists,
-    tasks: Tasks
+    members: Members,
+    police: Polices
 }
 
 type Profile {
     name: String,
-    birthday: Number,
+    lastName: String,
+    momLastName: String,
+    phone: Number,
     emailNotifications: Boolean,
     phoneNotifications: Boolean
 }
 
-type List {
+type Member {
     name: String,
-    description: String,
-    items: ListItems
+    lastName: String,
+    momLastName: String,
+    phone: Number,
+    email: String,
+    done: Boolean
 }
 
-type ListItem {
-  title: String,
-  done: Boolean
-}
-
-type Task {
-    title: String,
-    time: Number,
-    project: String,
+type Police {
+    name: String,
+    phone: Number,
+    email: String,
     participants: Participants,
     done: Boolean
 }
