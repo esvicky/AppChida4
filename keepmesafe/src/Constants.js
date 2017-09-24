@@ -15,7 +15,7 @@ const DEFAULT_USER = (name: string, lastName: string, momLastName: string, phone
             "name" : "Pancho",
             "lastName" : "Perez",
             "momLastName" : "Perez",
-            "phone" : 0445512345678,
+            "phone" : 519948000000,
             "email" : "example@gmail.com",
             "done" : false
         }
@@ -25,7 +25,7 @@ const DEFAULT_USER = (name: string, lastName: string, momLastName: string, phone
         "-KrpI_77r8nBwiT1CYxl": {
             "done" : true,
             "name" : "Policia CDMX",
-            "phone" : 0445587654321,
+            "phone" : 519948000001,
             "email" : "policia.cdmx@gmail.com"
         }
     }

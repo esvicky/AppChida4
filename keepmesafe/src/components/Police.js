@@ -6,14 +6,14 @@ import {View, Text, StyleSheet} from "react-native";
 import {H3} from "native-base";
 
 import {Avatar, Styles, Circle} from "../components";
-import {Task as ITask} from "../Model";
+import {Police as IPolice} from "../Model";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
 export default class Task extends Component {
 
     props: {
-        task: ITask,
+        police: IPolice,
         timeline?: boolean
     }
 
@@ -22,11 +22,9 @@ export default class Task extends Component {
     }
 
     render(): React$Element<*> {
-        const {task, timeline} = this.props;
-        const {title, project, participants, done, time} = task;
+        const {police, timeline} = this.props;
+        const {name, phone, email, done} = police;
         const completed = done;
-        const date = moment.unix(time);
-        const height = Object.keys(participants ? participants : {}).length > 1 ? 150 : 100;
         return <View style={[Styles.listItem, { height }]}>
             {
                 timeline && <TaskStatus {...{ timeline, completed, height }} />
@@ -38,11 +36,6 @@ export default class Task extends Component {
             <View style={style.title}>
                 <H3>{title}</H3>
                 <Text style={style.gray}>{project}</Text>
-                <View style={style.row}>
-                {
-                    participants && _.map(participants, (id, key) => <Avatar {...{ id, key }} style={style.avatar} />)
-                }
-                </View>
             </View>
             {
                 !timeline && <TaskStatus {...{ completed, height }} />
