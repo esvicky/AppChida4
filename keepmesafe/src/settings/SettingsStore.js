@@ -15,6 +15,18 @@ export default class SettingsStore {
         Firebase.userRef.child("profile/name").set(name);
     });
 
+    setLastName = debounce(1000, (lastName: string) => {
+        Firebase.userRef.child("profile/lastName").set(lastName);
+    });
+
+    setMomLastName = debounce(1000, (momLastName: string) => {
+        Firebase.userRef.child("profile/momLastName").set(momLastName);
+    });
+
+    setPhone = debounce(13, (phone: number) => {
+        Firebase.userRef.child("profile/phone").set(phone);
+    });
+
     constructor() {
         Firebase.getUser().then(user => this.profile = user.profile);
     }

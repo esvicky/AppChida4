@@ -33,6 +33,21 @@ export default class Settings extends Component {
                         defaultValue={profile.name}
                         onChange={value => this.store.setName(value)}
                     />
+                    <Field
+                        label="Last Name"
+                        defaultValue={profile.lastName}
+                        onChange={value => this.store.setName(value)}
+                    />
+                    <Field
+                        label="Mom's Last Name"
+                        defaultValue={profile.momLastName}
+                        onChange={value => this.store.setName(value)}
+                    />
+                    <Field
+                        label="Phone Number"
+                        defaultValue={profile.phone}
+                        onChange={value => this.store.setName(value)}
+                    />
                     <ListItem itemDivider>
                         <Text>NOTIFICATIONS</Text>
                     </ListItem>

@@ -61,8 +61,29 @@ export default class SignUp extends Component {
                         label="Name"
                         autoCorrect={false}
                         autoCapitalize="none"
-                        keyboardType="email-address"
+                        keyboardType="default"
                         onChange={name => this.store.name = name}
+                    />
+                    <Field
+                        label="Last Name"
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        keyboardType="default"
+                        onChange={lastName => this.store.lastName = lastName}
+                    />
+                    <Field
+                        label="Mom's Last Name"
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        keyboardType="default"
+                        onChange={momLastName => this.store.momLastName = momLastName}
+                    />
+                    <Field
+                        label="Phone"
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        keyboardType="phone-pad"
+                        onChange={phone => this.store.phone = phone}
                     />
                     <Field
                         label="Email"

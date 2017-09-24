@@ -36,10 +36,10 @@ export default class Firebase {
     }
 
     static async setDefaultUserIfEmpty(user: firebase.User): Promise<void> {
-        const {uid, displayName} = user;
+        const {uid, displayName, displayLastName, displayMomLastName, displayPhone} = user;
         const snapshot = await Firebase.database.ref(`users/${uid}`).once("value");
         if (snapshot.val() === null) {
-            await Firebase.database.ref(`users/${uid}`).set(DEFAULT_USER(displayName));
+            await Firebase.database.ref(`users/${uid}`).set(DEFAULT_USER(displayName, displayLastName, displayMomLastName, displayPhone));
         }
     }
 }

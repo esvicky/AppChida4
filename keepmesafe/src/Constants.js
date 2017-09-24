@@ -1,10 +1,12 @@
 // @flow
 import {User} from "./Model";
 
-const DEFAULT_USER = (name: string): User => ({
+const DEFAULT_USER = (name: string, lastName: string, momLastName: string, phone: number): User => ({
     profile : {
         name,
-        "phone" : 519948000000,
+        lastName,
+        momLastName,
+        phone,
         "emailNotifications" : true,
         "phoneNotifications" : true
     },
@@ -13,7 +15,7 @@ const DEFAULT_USER = (name: string): User => ({
             "name" : "Pancho",
             "lastName" : "Perez",
             "momLastName" : "Perez",
-            "phone" : 519948000001,
+            "phone" : 0445512345678,
             "email" : "example@gmail.com",
             "done" : false
         }
@@ -23,7 +25,7 @@ const DEFAULT_USER = (name: string): User => ({
         "-KrpI_77r8nBwiT1CYxl": {
             "done" : true,
             "name" : "Policia CDMX",
-            "phone" : 519948000002,
+            "phone" : 0445587654321,
             "email" : "policia.cdmx@gmail.com"
         }
     }

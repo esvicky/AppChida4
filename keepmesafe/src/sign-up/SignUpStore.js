@@ -13,6 +13,18 @@ export default class SignUpStore {
     @computed get name(): string { return this._name; }
     set name(name: string) { this._name = name; }
 
+    @observable _lastName: string = "";
+    @computed get lastName(): string { return this._lastName; }
+    set lastName(lastName: string) { this._lastName = lastName; }
+
+    @observable _momLastName: string = "";
+    @computed get momLastName(): string { return this._momLastName; }
+    set momLastName(momLastName: string) { this._momLastName = momLastName; }
+
+    @observable _phone: number = "";
+    @computed get phone(): number { return this._phone; }
+    set phone(phone: number) { this._phone = phone; }
+
     @observable _email: string = "";
     @computed get email(): string { return this._email; }
     set email(email: string) { this._email = email; }
@@ -22,11 +34,20 @@ export default class SignUpStore {
     set password(password: string) { this._password = password; }
 
     async signIn(): Promise<void> {
-        const {name, email, password} = this;
+        const {name, lastName, momLastName, phone, email, password} = this;
         this.loading = true;
         try {
             if (name === "") {
                 throw new Error("Please provide name.");
+            }
+            if (lastName === ""){
+                throw new Error("Please provide last name.");
+            }
+            if (momLastName === ""){
+                throw new Error("Please provide mom's last name.");
+            }
+            if (phone === ""){
+                throw new Error("Please provide phone number.");
             }
             if (email === "") {
                 throw new Error("Please provide email address.");
@@ -35,7 +56,7 @@ export default class SignUpStore {
                 throw new Error("Please provide password.");
             }
             const user = await Firebase.auth.createUserWithEmailAndPassword(email, password);
-            await user.updateProfile({ displayName: name });
+            await user.updateProfile({ displayName: name , displayLastName: lastName, displayMomLastName: momLastName, displayPhone: phone});
             await Firebase.setDefaultUserIfEmpty(user);
             this.loading = false;
         } catch(e) {
