@@ -5,7 +5,6 @@ path /users/{uid} is User {
 
 type Members extends Member[] {}
 type Polices extends Police[] {}
-type Participants extends Participant[] {}
 
 type User {
     profile: Profile,
@@ -35,12 +34,7 @@ type Police {
     name: String,
     phone: Number,
     email: String,
-    participants: Participants,
     done: Boolean
-}
-
-type Participant {
-  uid: String
 }
 
 isAuthenticated() { auth != null }
