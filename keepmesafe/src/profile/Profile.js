@@ -19,11 +19,14 @@ export default class Profile extends Component {
                     <View style={[Styles.header, Styles.whiteBg, Styles.center]}>
                         <Avatar size={100} />
                         <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.user.profile.name}</H1>
+                        <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.user.profile.lastName}</H1>
+                        <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.user.profile.momLastName}</H1>
+                        <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.user.profile.phone}</H1>
                     </View>
                     <TaskOverview completed={store.completedTaskCount} overdue={store.overdueTaskCount} />
                     <ScrollView>
                     {
-                        _.map(store.user.tasks, (task, key) => <Task {...{task, key}} />)
+                        _.map(store.user.police, (task, key) => <Task {...{police, key}} />)
                     }
                     </ScrollView>
                 </View>
