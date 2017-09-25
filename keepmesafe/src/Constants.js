@@ -1,12 +1,11 @@
 // @flow
 import {User} from "./Model";
 
-const DEFAULT_USER = (name: string, lastName: string, momLastName: string, phone: number): User => ({
+const DEFAULT_USER = (name: string, phone: number, email: string): User => ({
     profile : {
         name,
-        lastName,
-        momLastName,
-        phone,
+        "phone": 519948000000,
+        email,
         "emailNotifications" : true,
         "phoneNotifications" : true
     },

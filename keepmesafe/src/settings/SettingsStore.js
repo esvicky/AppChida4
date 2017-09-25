@@ -23,7 +23,7 @@ export default class SettingsStore {
         Firebase.userRef.child("profile/momLastName").set(momLastName);
     });
 
-    setPhone = debounce(13, (phone: number) => {
+    setPhone = debounce(1000, (phone: number) => {
         Firebase.userRef.child("profile/phone").set(phone);
     });
 

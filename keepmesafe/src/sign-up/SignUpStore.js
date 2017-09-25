@@ -56,7 +56,7 @@ export default class SignUpStore {
                 throw new Error("Please provide password.");
             }
             const user = await Firebase.auth.createUserWithEmailAndPassword(email, password);
-            await user.updateProfile({ displayName: name , displayLastName: lastName, displayMomLastName: momLastName, displayPhone: phone});
+            await user.updateProfile({ displayName: `${name} ${lastName} ${momLastName}`,email, phoneNumber: phone });
             await Firebase.setDefaultUserIfEmpty(user);
             this.loading = false;
         } catch(e) {

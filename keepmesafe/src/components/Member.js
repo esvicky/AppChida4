@@ -6,24 +6,20 @@ import {View, Text, StyleSheet} from "react-native";
 import {H3} from "native-base";
 
 import {Avatar, Styles, Circle} from "../components";
-import {Police as IPolice} from "../Model";
+import {Member as IMember} from "../Model";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
-export default class Task extends Component {
+export default class Member extends Component {
 
     props: {
-        police: IPolice,
+        member: IMember,
         timeline?: boolean
     }
 
-    static defaultProps = {
-        collaborators: []
-    }
-
     render(): React$Element<*> {
-        const {police, timeline} = this.props;
-        const {name, phone, email, done} = police;
+        const {member, timeline} = this.props;
+        const {name, lastName, momLastName, phone, email, done} = member;
         const completed = done;
         return <View style={[Styles.listItem, { height }]}>
             {

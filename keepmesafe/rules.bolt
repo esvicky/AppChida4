@@ -14,9 +14,8 @@ type User {
 
 type Profile {
     name: String,
-    lastName: String,
-    momLastName: String,
     phone: Number,
+    email: String,
     emailNotifications: Boolean,
     phoneNotifications: Boolean
 }

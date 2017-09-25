@@ -5,7 +5,7 @@ import {View, ScrollView} from "react-native";
 import {H1} from "native-base";
 import {inject, observer} from "mobx-react/native";
 
-import {BaseContainer, Avatar, TaskOverview, Styles, Task} from "../components";
+import {BaseContainer, Avatar, TaskOverview, Styles, Member} from "../components";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
@@ -26,7 +26,7 @@ export default class Profile extends Component {
                     <TaskOverview completed={store.completedTaskCount} overdue={store.overdueTaskCount} />
                     <ScrollView>
                     {
-                        _.map(store.user.police, (task, key) => <Task {...{police, key}} />)
+                        _.map(store.user.members, (member, key) => <Task {...{member, key}} />)
                     }
                     </ScrollView>
                 </View>
