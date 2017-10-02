@@ -5,7 +5,7 @@ const DEFAULT_USER = (name: string, email: string): User => ({
     profile : {
         name,
         email,
-        "phone" : "+525512121212",
+        "phone" : "",
         "emailNotifications" : true,
         "phoneNotifications" : true
     },
