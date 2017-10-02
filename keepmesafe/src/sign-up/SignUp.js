@@ -79,13 +79,6 @@ export default class SignUp extends Component {
                         onChange={momLastName => this.store.momLastName = momLastName}
                     />
                     <Field
-                        label="Phone"
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        keyboardType="phone-pad"
-                        onChange={phone => this.store.phone = phone}
-                    />
-                    <Field
                         label="Email"
                         autoCorrect={false}
                         autoCapitalize="none"

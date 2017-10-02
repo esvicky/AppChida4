@@ -19,13 +19,13 @@ export default class Lists extends Component {
     store = new ListsStore();
 
     render(): React$Element<*> {
-        const {polices, loading} = this.store;
-        return <BaseContainer title="Members" navigation={this.props.navigation} scrollable>
+        const {tasks, loading} = this.store;
+        return <BaseContainer title="Lists" navigation={this.props.navigation} scrollable>
         {
             !loading && <View>
                 <Image source={Images.lists} style={Styles.header}>
                     <View style={[Styles.center, Styles.flexGrow, Styles.headerMask]}>
-                        <H1 style={{ color: "white" }}>Comunity</H1>
+                        <H1 style={{ color: "white" }}>Task List</H1>
                     </View>
                 </Image>
                 {

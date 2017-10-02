@@ -4,18 +4,16 @@ path /users/{uid} is User {
 }
 
 type Members extends Member[] {}
-type Polices extends Police[] {}
 
 type User {
     profile: Profile,
-    members: Members,
-    police: Polices
+    members: Members
 }
 
 type Profile {
     name: String,
-    phone: Number,
     email: String,
+    phone: String,
     emailNotifications: Boolean,
     phoneNotifications: Boolean
 }
@@ -24,14 +22,7 @@ type Member {
     name: String,
     lastName: String,
     momLastName: String,
-    phone: Number,
-    email: String,
-    done: Boolean
-}
-
-type Police {
-    name: String,
-    phone: Number,
+    phone: String,
     email: String,
     done: Boolean
 }

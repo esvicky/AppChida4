@@ -21,10 +21,6 @@ export default class SignUpStore {
     @computed get momLastName(): string { return this._momLastName; }
     set momLastName(momLastName: string) { this._momLastName = momLastName; }
 
-    @observable _phone: number = "";
-    @computed get phone(): number { return this._phone; }
-    set phone(phone: number) { this._phone = phone; }
-
     @observable _email: string = "";
     @computed get email(): string { return this._email; }
     set email(email: string) { this._email = email; }
@@ -46,9 +42,6 @@ export default class SignUpStore {
             if (momLastName === ""){
                 throw new Error("Please provide mom's last name.");
             }
-            if (phone === ""){
-                throw new Error("Please provide phone number.");
-            }
             if (email === "") {
                 throw new Error("Please provide email address.");
             }
@@ -56,7 +49,7 @@ export default class SignUpStore {
                 throw new Error("Please provide password.");
             }
             const user = await Firebase.auth.createUserWithEmailAndPassword(email, password);
-            await user.updateProfile({ displayName: `${name} ${lastName} ${momLastName}`,email, phoneNumber: phone });
+            await user.updateProfile({ displayName: `${name} ${lastName} ${momLastName}`,email});
             await Firebase.setDefaultUserIfEmpty(user);
             this.loading = false;
         } catch(e) {
