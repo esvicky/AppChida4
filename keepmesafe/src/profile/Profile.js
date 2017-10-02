@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 import * as _ from "lodash";
 import {View, ScrollView} from "react-native";
-import {H1} from "native-base";
+import {H1, H2, H3, H4, H5, H6} from "native-base";
 import {inject, observer} from "mobx-react/native";
 
 import {BaseContainer, Avatar, TaskOverview, Styles, Member} from "../components";
@@ -19,6 +19,7 @@ export default class Profile extends Component {
                     <View style={[Styles.header, Styles.whiteBg, Styles.center]}>
                         <Avatar size={100} />
                         <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.user.profile.name}</H1>
+                        <H3 style={{ marginTop: variables.contentPadding }}>{store.user.profile.phone}</H3>
                     </View>
                     <TaskOverview completed={store.completedTaskCount} overdue={store.overdueTaskCount} />
                     <ScrollView>

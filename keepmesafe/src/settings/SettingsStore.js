@@ -1,6 +1,6 @@
 // @flow
 import {observable, computed} from "mobx";
-import  {debounce} from "throttle-debounce";
+import {debounce} from "throttle-debounce";
 
 import {Profile} from "../Model";
 import {Firebase} from "../components";
@@ -15,17 +15,9 @@ export default class SettingsStore {
         Firebase.userRef.child("profile/name").set(name);
     });
 
-    setLastName = debounce(1000, (lastName: string) => {
-        Firebase.userRef.child("profile/lastName").set(lastName);
-    });
-
-    setMomLastName = debounce(1000, (momLastName: string) => {
-        Firebase.userRef.child("profile/momLastName").set(momLastName);
-    });
-
-    /*setPhone = debounce(1000, (phone: string) => {
+    setPhone = debounce(1000, (phone: string) => {
         Firebase.userRef.child("profile/phone").set(phone);
-    });*/
+    });
 
     constructor() {
         Firebase.getUser().then(user => this.profile = user.profile);
