@@ -24,15 +24,15 @@ export default class Walkthrough extends Component {
     cards: Cards = [
         {
             color: variables.brandPrimary,
-            label: "Share with coworkers, friends, and family"
+            label: "Contacta a tu comunidad en caso de una emergencia"
         },
         {
             color: variables.brandSecondary,
-            label: "Manage your tasks efficiently and quickly"
+            label: "Siéntete a salvo"
         },
         {
             color: variables.brandInfo,
-            label: "Group by topics that matter to you"
+            label: "Es facil y rápido"
         }
     ];
 
@@ -51,7 +51,7 @@ export default class Walkthrough extends Component {
             <Header noShadow>
                 <Left />
                 <Body>
-                    <Title>Walkthrough</Title>
+                    <Title>Descubre</Title>
                 </Body>
                 <Right />
             </Header>
@@ -63,7 +63,7 @@ export default class Walkthrough extends Component {
                 />
                 <View style={[{marginTop: variables.contentPadding}, Styles.center]}>
                     <Button onPress={this.home} light>
-                        <Text>Got it</Text>
+                        <Text>Entendido</Text>
                     </Button>
                 </View>
             </View>
