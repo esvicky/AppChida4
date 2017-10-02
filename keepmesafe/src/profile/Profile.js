@@ -23,7 +23,7 @@ export default class Profile extends Component {
                     <TaskOverview completed={store.completedTaskCount} overdue={store.overdueTaskCount} />
                     <ScrollView>
                     {
-                        _.map(store.user.police, (task, key) => <Task {...{police, key}} />)
+                        _.map(store.user.tasks, (task, key) => <Task {...{task, key}} />)
                     }
                     </ScrollView>
                 </View>
