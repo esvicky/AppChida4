@@ -23,7 +23,7 @@ export default class Home extends Component {
         return <BaseContainer title="" {...{ navigation }}>
             <Image source={Images.home} style={[style.img, Styles.center, Styles.flexGrow]}>
                 <View style={Styles.center}>
-                    <H1>Good Morning!</H1>
+                    <H1>Hola</H1>
                     <Circle color={variables.brandInfo} size={150} style={style.circle}>
                         <Circle color={variables.brandPrimary} size={30} style={style.badge}>
                             <Text style={style.text}>8</Text>
