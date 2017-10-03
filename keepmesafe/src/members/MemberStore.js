@@ -43,16 +43,28 @@ export default class MemberStore {
     async save(): Promise<void> {
         this.loading = true;
         const {name, phone, email, done} = this;
-        if (title === "") {
+        if (name === "") {
             this.loading = false;
-            throw new Error("Title field required");
+            throw new Error("Name field required");
         }
-        if (project === "") {
+        if (lastName === ""){
+        	this.loading = false;
+            throw new Error("Last name field required");
+        }
+        if (momLastName === ""){
+        	this.loading = false;
+            throw new Error("Mom's last name field required");
+        }
+        if (phone === "") {
             this.loading = false;
-            throw new Error("Project field required");
+            throw new Error("Phone field required");
         }
-        const task: Task = {title, time, project, participants: {}, done};
-        await Firebase.userRef.child("tasks").push(task);
+        if (email === "") {
+            this.loading = false;
+            throw new Error("Email field required");
+        }
+        const member: Member = {name: `${name}/${lastName}/${momLastName}`, phone, email, done};
+        await Firebase.userRef.child("members").push(member);
         this.loading = false;
     }
 
