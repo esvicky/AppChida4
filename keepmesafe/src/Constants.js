@@ -11,9 +11,7 @@ const DEFAULT_USER = (name: string, email: string): User => ({
     },
     members : {
         "9IjrOBdfw5WtTNutIk5cHVQL01n2" : {
-            "name" : "Pancho",
-            "lastName" : "Perez",
-            "momLastName" : "Perez",
+            "name" : "Pancho/Perez/Perez",
             "phone" : "+525511111111",
             "email" : "example@gmail.com",
             "done" : false
