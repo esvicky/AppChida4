@@ -3,8 +3,7 @@ import autobind from "autobind-decorator";
 import React, {Component} from "react";
 import {observer} from "mobx-react/native";
 import {StyleSheet, View, Text, Image} from "react-native";
-import {H1, Button, Spinner, ListItem, Item, Body, Label} from "native-base";
-import DatePicker from "react-native-datepicker";
+import {H1, Button, Spinner} from "native-base";
 
 import CreateStore from "./CreateStore";
 
@@ -36,64 +35,39 @@ export default class Create extends Component {
         const footer = (
             <Button primary full onPress={this.save}>
                 {
-                    this.store.loading ? <Spinner color="white" /> : <Text style={style.text}>CREATE</Text>
+                    this.store.loading ? <Spinner color="white" /> : <Text style={style.text}>ADD MEMBER</Text>
                 }
             </Button>
         );
-        return <BaseContainer title="Create New" navigation={this.props.navigation} scrollable {...{footer}}>
+        return <BaseContainer title="Add New Member" navigation={this.props.navigation} scrollable {...{footer}}>
             <Image source={Images.lists} style={Styles.header}>
                 <View style={[Styles.center, Styles.flexGrow, Styles.headerMask]}>
-                    <H1 style={{ color: "white" }}>NEW TASK</H1>
+                    <H1 style={{ color: "white" }}>NEW MEMBER</H1>
                 </View>
             </Image>
             <Field
-                label="Title"
-                onChange={title => this.store.title = title}
+                label="Name"
+                onChange={firstName => this.store.firstName = firstName}
             />
             <Field
-                label="Project"
-                onChange={project => this.store.project = project}
+                label="Last Name"
+                onChange={lastName => this.store.lastName = lastName}
             />
-            <ListItem last>
-                <Body>
-                    <Item style={{ borderBottomWidth: 0 }} stackedLabel={true}>
-                        <Label>Date time</Label>
-                        <DatePicker
-                            style={style.datePicker}
-                            customStyles={datePickerStyle}
-                            date={this.store.datetime}
-                            mode="datetime"
-                            format="YYYY-MM-DD HH:mm"
-                            confirmBtnText="Confirm"
-                            cancelBtnText="Cancel"
-                            showIcon={false}
-                            onDateChange={datetime => this.store.datetime = datetime}
-                        />
-                    </Item>
-                </Body>
-            </ListItem>
+            <Field
+                label="Mom's Last Name"
+                onChange={momLastName => this.store.momLastName = momLastName}
+            />
+            <Field
+                label="Phone Number"
+                onChange={phone => this.store.phone = phone}
+            />
+            <Field
+                label="Email"
+                onChange={email => this.store.email = email}
+            />
         </BaseContainer>;
     }
 }
-
-const datePickerStyle = {
-    dateInput: {
-        borderWidth: 0,
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "flex-start"
-    },
-    dateText: {
-        fontFamily: "Avenir-Book",
-        fontSize: 17
-    },
-    dateTouchBody: {
-        flex: 1
-    },
-    btnTextConfirm: {
-        color: variables.brandPrimary
-    }
-};
 
 const {width} = WindowDimensions;
 const style = StyleSheet.create({

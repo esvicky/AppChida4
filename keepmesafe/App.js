@@ -18,6 +18,7 @@ import {Calendar} from "./src/calendar";
 import {Overview} from "./src/overview";
 import {Groups} from "./src/groups";
 import {Lists} from "./src/lists";
+import {Members} from "./src/members";
 import {Profile} from "./src/profile";
 import {Timeline} from "./src/timeline";
 import {Settings} from "./src/settings";
@@ -96,6 +97,7 @@ const MainNavigator = DrawerNavigator({
     Overview: { screen: Overview },
     Groups: { screen: Groups },
     Lists: { screen: Lists },
+    Members: { screen: Members },
     Profile: { screen: Profile },
     Timeline: { screen: Timeline },
     Settings: { screen: Settings },

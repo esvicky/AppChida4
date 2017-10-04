@@ -2,34 +2,39 @@
 import {observable, computed} from "mobx";
 import moment from "moment";
 
-import type {Task} from "../Model";
+import type {Member} from "../Model";
 import {Firebase} from "../components";
 
 export default class CreateStore {
 
     constructor() {
         this.loading = false;
-        this.datetime = moment().format("YYYY-MM-DD HH:mm");
         this.done = false;
     }
-
+    
     @observable _loading: boolean;
     @computed get loading(): boolean { return this._loading; }
     set loading(loading: boolean) { this._loading = loading; }
 
-    @observable _title: string = "";
-    @computed get title(): string { return this._title; }
-    set title(title: string) { this._title = title; }
+    @observable _firstName: string = "";
+    @computed get firstName(): string { return this._firstName; }
+    set firstName(firstName: string) { this._firstName = firstName; }
 
-    @observable _project: string = "";
-    @computed get project(): string { return this._project; }
-    set project(project: string) { this._project = project; }
+    @observable _lastName: string = "";
+    @computed get lastName(): string { return this._lastName; }
+    set lastName(lastName: string) { this._lastName = lastName; }
 
-    @observable _datetime: string;
-    @computed get datetime(): string { return this._datetime; }
-    set datetime(datetime: string) { this._datetime = datetime; }
+    @observable _momLastName: string = "";
+    @computed get momLastName(): string { return this._momLastName; }
+    set momLastName(momLastName: string) { this._momLastName = momLastName; }
 
-    @computed get time(): number { return parseInt(moment(this.datetime, "YYYY-MM-DD HH:mm").format("X"), 10); }
+    @observable _phone: string = "";
+    @computed get phone(): string { return this._phone; }
+    set phone(phone: string) { this._phone = phone; }
+
+    @observable _email: string = "";
+    @computed get email(): string { return this._email; }
+    set email(email: string) { this._email = email; }
 
     @observable _done: boolean;
     @computed get done(): boolean { return this._done; }
@@ -37,17 +42,30 @@ export default class CreateStore {
 
     async save(): Promise<void> {
         this.loading = true;
-        const {title, time, project, done} = this;
-        if (title === "") {
+        const {firstName, lastName, momLastName, phone, email, done} = this;
+        if (firstName === "") {
             this.loading = false;
-            throw new Error("Title field required");
+            throw new Error("Name field required");
         }
-        if (project === "") {
+        if (lastName === ""){
             this.loading = false;
-            throw new Error("Project field required");
+            throw new Error("Last firstName field required");
         }
-        const task: Task = {title, time, project, participants: {}, done};
-        await Firebase.userRef.child("tasks").push(task);
+        if (momLastName === ""){
+            this.loading = false;
+            throw new Error("Mom's last firstName field required");
+        }
+        if (phone === "") {
+            this.loading = false;
+            throw new Error("Phone field required");
+        }
+        if (email === "") {
+            this.loading = false;
+            throw new Error("Email field required");
+        }
+        const member: Member = {name: `${firstName}/${lastName}/${momLastName}`, phone, email, done};
+        await Firebase.userRef.child("members").push(member);
         this.loading = false;
     }
+
 }

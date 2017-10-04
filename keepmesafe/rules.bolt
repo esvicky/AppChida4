@@ -20,8 +20,6 @@ type Profile {
 
 type Member {
     name: String,
-    lastName: String,
-    momLastName: String,
     phone: String,
     email: String,
     done: Boolean
