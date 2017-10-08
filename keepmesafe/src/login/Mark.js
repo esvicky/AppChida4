@@ -18,10 +18,10 @@ const getStyle = (size: number): ViewStylePropTypes  => {
 export default class Mark extends React.Component {
 
     render(): React$Element<View> {
-        return <View style={[getStyle(230), {borderColor: "rgba(255, 255, 255, .3)", borderWidth: 2 }]}>
-            <View style={[getStyle(210), { borderColor: "rgba(255, 255, 255, .5)", borderWidth: 2 }]}>
-                <View style={[getStyle(180), { borderColor: "white", borderWidth: 2 }]}>
-                    <View style={[getStyle(150), { backgroundColor: commonColor.white }]}>
+        return <View style={[getStyle(200), {borderColor: "rgba(255, 255, 255, .3)", borderWidth: 1 }]}>
+            <View style={[getStyle(180), { borderColor: "rgba(255, 255, 255, .5)", borderWidth: 1 }]}>
+                <View style={[getStyle(150), { borderColor: "white", borderWidth: 1 }]}>
+                    <View style={[getStyle(120), { backgroundColor: commonColor.white }]}>
                         <Icon name="md-checkmark" style={{fontSize: 100, color: commonColor.brandPrimary }} />
                     </View>
                 </View>

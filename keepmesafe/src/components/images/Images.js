@@ -3,7 +3,7 @@ import {Asset} from "expo";
 
 export default class Images {
 
-    static login = require("./city.png");
+    static login = require("./login1.jpg");
     static signUp = require("./signUp.jpg");
     static drawer = require("./drawer.jpg");
     static home = require("./home.jpg");
