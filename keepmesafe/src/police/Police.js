@@ -17,7 +17,7 @@ export default class Police extends Component {
             {
                 store.police && <View>
                     <View style={[Styles.whiteBg, Styles.center]}>
-                        <Avatar size={100} />
+                        <Avatar id={4} size={100} />
                         <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.police.name}</H1>
                         <H3 style={{ marginTop: variables.contentPadding }}>{store.police.email}</H3>
                         <H3 style={{ marginTop: variables.contentPadding }}>{store.police.phone}</H3>

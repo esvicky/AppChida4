@@ -26,7 +26,9 @@ export default class Avatar extends Component {
             source = Images.avatar2;
         } else if (id === 3) {
             source = Images.avatar3;
-        } else {
+        } else if (id === 4) {
+            source = Images.police;
+        }else {
             source = Images.defaultAvatar;
         }
         return <Image {...{source}} style={[style, { width: size, height: size, borderRadius: size / 2 }]} />;

@@ -109,7 +109,7 @@ const style = StyleSheet.create({
     },
     logo: {
         alignSelf: "center",
-        marginBottom: variables.contentPadding * 2
+        marginBottom: variables.contentPadding
     },
     title: {
         marginTop: variables.contentPadding * 2,

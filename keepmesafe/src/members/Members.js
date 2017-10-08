@@ -20,12 +20,12 @@ export default class Members extends Component {
 
     render(): React$Element<*> {
         const {members, loading} = this.store;
-        return <BaseContainer title="Members" navigation={this.props.navigation} scrollable>
+        return <BaseContainer title="Miembros" navigation={this.props.navigation} scrollable>
         {
             !loading && <View>
-                <Image source={Images.lists} style={Styles.header}>
+                <Image source={Images.members} style={Styles.header}>
                     <View style={[Styles.center, Styles.flexGrow, Styles.headerMask]}>
-                        <H1 style={{ color: "white" }}>Member List</H1>
+                        <H1 style={{ color: "white" }}>Lista de Miembros</H1>
                     </View>
                 </Image>
                 {
