@@ -6,7 +6,7 @@ import React, {Component} from "react";
 import {StyleSheet, Image, View, Text} from "react-native";
 import {H1} from "native-base";
 
-import {BaseContainer, Styles, Images, Avatar, Task} from "../components";
+import {BaseContainer, Styles, Images, Avatar, Member, Task} from "../components";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
@@ -22,11 +22,11 @@ export default class Timeline extends Component {
                     <View style={[Styles.imgMask, Styles.center, Styles.flexGrow]}>
                         <Avatar size={50} />
                         <H1 style={StyleSheet.flatten(style.heading)}>{moment().format("MMMM")}</H1>
-                        <Text style={Styles.whiteText}>{store.taskCount} TASKS</Text>
+                        <Text style={Styles.whiteText}>{store.memberCount} MEMBERS</Text>
                     </View>
                 </Image>
                 {
-                    _.map(store.user.tasks, (task, key) => <Task {...{key, task}} timeline />)
+                    _.map(store.user.members, (member, key) => <Member {...{key, member}} timeline />)
                 }
             </View>
         }
@@ -38,5 +38,5 @@ const style = StyleSheet.create({
     heading: {
         marginTop: variables.contentPadding * 2,
         color: "white"
-    }
+    }   
 });

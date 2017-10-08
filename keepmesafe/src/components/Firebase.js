@@ -43,20 +43,13 @@ export default class Firebase {
         }
     }
 
-    static async getPolice(police: firebase.Police): Promise<string> {
-        const {name, email, phone} = police;
-        const snapshot = await Firebase.database.ref(`/police`).once("value");
-        if(police === "name"){
-            console.log(snapshot.val().name);
-            return snapshot.val().name;
-        }
-        if(police === "email"){
-            console.log(snapshot.val().email);
-            return snapshot.val().email;
-        }
-        if(police === "phone"){
-            console.log(snapshot.val().phone);
-            return snapshot.val().phone;
-        }        
+    static get policeRef(): firebase.database.Reference {
+        return Firebase.database.ref(`/police`);
     }
+
+    static async getPolice(): Promise<Police> {
+        const snapshot = await Firebase.database.ref(`/police`).once("value");
+        return snapshot.val();
+    }
+
 }

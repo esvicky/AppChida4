@@ -12,6 +12,8 @@ import NavigationHelpers from "./NavigationHelpers";
 import WindowDimensions from "./WindowDimensions";
 import Firebase from "./Firebase";
 import LoadingIndicator from "./LoadingIndicator";
+import Member from "./Member";
+import MemberOverview from "./MemberOverview";
 
 export {
     Small,
@@ -26,5 +28,7 @@ export {
     NavigationHelpers,
     WindowDimensions,
     Firebase,
-    LoadingIndicator
+    LoadingIndicator,
+    Member,
+    MemberOverview
 };
