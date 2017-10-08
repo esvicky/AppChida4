@@ -16,10 +16,11 @@ export default class Profile extends Component {
         return <BaseContainer title="Profile" navigation={this.props.navigation} scrollable>
             {
                 store.user && <View>
-                    <View style={[Styles.header, Styles.whiteBg, Styles.center]}>
+                    <View style={[Styles.whiteBg, Styles.center]}>
                         <Avatar size={100} />
                         <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.user.profile.name}</H1>
                         <H3 style={{ marginTop: variables.contentPadding }}>{store.user.profile.phone}</H3>
+                        <H3 style={{ marginTop: variables.contentPadding }}>{store.user.profile.email}</H3>
                     </View>
                     <TaskOverview completed={store.completedTaskCount} overdue={store.overdueTaskCount} />
                     <ScrollView>

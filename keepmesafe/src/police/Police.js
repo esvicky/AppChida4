@@ -16,9 +16,10 @@ export default class Police extends Component {
         return <BaseContainer title="Police" navigation={this.props.navigation} scrollable>
             {
                 store.police && <View>
-                    <View style={[Styles.header, Styles.whiteBg, Styles.center]}>
+                    <View style={[Styles.whiteBg, Styles.center]}>
                         <Avatar size={100} />
                         <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.police.name}</H1>
+                        <H3 style={{ marginTop: variables.contentPadding }}>{store.police.email}</H3>
                         <H3 style={{ marginTop: variables.contentPadding }}>{store.police.phone}</H3>
                     </View>
                 </View>

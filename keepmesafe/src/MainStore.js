@@ -35,7 +35,6 @@ export default class MainStore {
             .filter(member => member.done).length : 0;
     } 
 
-
     get taskCount(): number {
         return this.user ? Object.keys(this.user.tasks || {}).length : 0;
     }
