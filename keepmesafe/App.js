@@ -19,6 +19,7 @@ import {Overview} from "./src/overview";
 import {Groups} from "./src/groups";
 import {Lists} from "./src/lists";
 import {Members} from "./src/members";
+import {Police} from "./src/police";
 import {Profile} from "./src/profile";
 import {Timeline} from "./src/timeline";
 import {Settings} from "./src/settings";
@@ -98,6 +99,7 @@ const MainNavigator = DrawerNavigator({
     Groups: { screen: Groups },
     Lists: { screen: Lists },
     Members: { screen: Members },
+    Police: { screen: Police },
     Profile: { screen: Profile },
     Timeline: { screen: Timeline },
     Settings: { screen: Settings },

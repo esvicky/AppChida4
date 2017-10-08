@@ -11,11 +11,12 @@ export default class TaskOverview extends Component {
 
     props: {
         completed: number,
-        overdue: number
+        overdue: number,
+        totalMem: number
     }
 
     render(): React$Element<*> {
-        const {completed, overdue} = this.props;
+        const {completed, overdue, totalMem} = this.props;
         return <View style={{ flexDirection: "row" }}>
             <View style={[style.count, Styles.center, { backgroundColor: variables.brandInfo }]}>
                 <Text style={Styles.whiteText}>COMPLETED</Text>
@@ -24,6 +25,10 @@ export default class TaskOverview extends Component {
             <View style={[style.count, Styles.center, { backgroundColor: variables.brandSecondary }]}>
                 <Text style={Styles.whiteText}>OVERDUE</Text>
                 <H1 style={StyleSheet.flatten(style.heading)}>{`${overdue}`}</H1>
+            </View>
+            <View style={[style.count, Styles.center, { backgroundColor: variables.brandInfo }]}>
+                <Text style={Styles.whiteText}>MEMBERS</Text>
+                <H1 style={StyleSheet.flatten(style.heading)}>{`${totalMem}`}</H1>
             </View>
         </View>;
     }

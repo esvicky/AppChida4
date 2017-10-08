@@ -3,6 +3,11 @@ path /users/{uid} is User {
     write() { isCurrentUser(uid) }
 }
 
+path /police is Police {
+    read() { true }
+    write() { false }
+}
+
 type Members extends Member[] {}
 
 type User {
@@ -23,6 +28,12 @@ type Member {
     phone: String,
     email: String,
     done: Boolean
+}
+
+type Police {
+    name: String,
+    email: String,
+    phone: String
 }
 
 isAuthenticated() { auth != null }

@@ -1,7 +1,7 @@
 // @flow
 import * as firebase from "firebase";
 
-import {User} from "../Model";
+import {User, Police} from "../Model";
 import {DEFAULT_USER} from "../Constants";
 
 const config = {
@@ -41,5 +41,14 @@ export default class Firebase {
         if (snapshot.val() === null) {
             await Firebase.database.ref(`users/${uid}`).set(DEFAULT_USER(displayName, email));
         }
+    }
+
+
+    static async getPolice(police: firebase.Police): Promise<void> {
+        const {name, email, phone} = police;
+        const snapshot = await Firebase.database.ref(`/police`).once("value");
+        console.log(snapshot.val());
+        return snapshot.val();
+        
     }
 }
