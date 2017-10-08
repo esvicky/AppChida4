@@ -10,25 +10,35 @@ import variables from "../../native-base-theme/variables/commonColor";
 
 import {Firebase} from "../components";
 
+import {Police as IPolice} from "../Model"
+
 
 
 @observer
 export default class Police extends Component {
-    render(): React$Element<*> {
+	constructor(props){
+		super(props)
+		console.log(this.props)
 
-        const police = Firebase.getPolice(name, email, phone);
-        console.log('hello:'+ this.props.name);
+		const {name, email, phone} = IPolice;
+		this.props.name = Object.value(Firebase.getPolice("name")).toString();
+	    //const email = "";// = Firebase.getPolice("email");
+	    //const phone = ""; //= Firebase.getPolice("phone");
+		console.log(this.props.name);
+	}
+
+    render(): React$Element<*> {
         return <BaseContainer title="Police" navigation={this.props.navigation} scrollable>
             {
                 <View>
                     <View style={[Styles.header, Styles.whiteBg, Styles.center]}>
                         <Avatar size={100} />
-                        <H1 style={{ marginTop: variables.contentPadding * 2 }}>{this.police.name}</H1>
-                        <H3 style={{ marginTop: variables.contentPadding }}>{this.police.email}</H3>
-                        <H3 style={{ marginTop: variables.contentPadding }}>{this.police.phone}</H3>
+                        <H1 style={{ marginTop: variables.contentPadding * 2 }}>{}</H1>
                     </View>
                 </View>
             }
         </BaseContainer>;
     }
 }
+//<H3 style={{ marginTop: variables.contentPadding }}>{this.props.email}</H3>
+                        //<H3 style={{ marginTop: variables.contentPadding }}>{this.props.phone}</H3>
