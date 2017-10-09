@@ -23,7 +23,7 @@ export default class Drawer extends Component {
         const navState = this.props.navigation.state;
         const currentIndex = navState.index;
         const items = navState.routes
-            .filter(route => ["Configuraciones", "Añade"].indexOf(route.key) === -1)
+            .filter(route => ["Settings", "Create"].indexOf(route.key) === -1)
             .map((route, i) =>
                 <DrawerItem key={i} onPress={() => this.go(route.key)} label={route.key} active={currentIndex === i} />
             );
@@ -38,7 +38,7 @@ export default class Drawer extends Component {
                     <View style={style.drawerItems}>{items}</View>
                 </View>
                 <View style={style.row}>
-                    <DrawerIcon label="configuraciones" icon="ios-settings-outline" onPress={() => this.go("Configuraciones")} />
+                    <DrawerIcon label="configuraciones" icon="ios-settings-outline" onPress={() => this.go("Settings")} />
                     <DrawerIcon label="salir" icon="ios-log-out-outline" onPress={this.logout} />
                 </View>
             </Container>

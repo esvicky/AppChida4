@@ -39,7 +39,7 @@ export default class Create extends Component {
                 }
             </Button>
         );
-        return <BaseContainer title="Añade Miembro" navigation={this.props.navigation} scrollable {...{footer}}>
+        return <BaseContainer title="Create" navigation={this.props.navigation} scrollable {...{footer}}>
             <Image source={Images.members} style={Styles.header}>
                 <View style={[Styles.center, Styles.flexGrow, Styles.headerMask]}>
                     <H1 style={{ color: "white" }}>MIEMBRO</H1>
