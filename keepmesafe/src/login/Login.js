@@ -117,6 +117,6 @@ const style = StyleSheet.create({
         textAlign: "center"
     },
     blur: {
-        backgroundColor: "rgba(255, 255, 255, .1)"
+        backgroundColor: "rgba(255, 255, 255, .2)"
     }
 });

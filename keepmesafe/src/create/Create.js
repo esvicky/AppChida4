@@ -25,7 +25,7 @@ export default class Create extends Component {
         try {
             await this.store.save();
             const {datetime} = this.store;
-            this.props.navigation.navigate("Calendar", { datetime });
+            this.props.navigation.navigate("Members");
         } catch(e) {
             alert(e.message);
         }
@@ -35,34 +35,49 @@ export default class Create extends Component {
         const footer = (
             <Button primary full onPress={this.save}>
                 {
-                    this.store.loading ? <Spinner color="white" /> : <Text style={style.text}>ADD MEMBER</Text>
+                    this.store.loading ? <Spinner color="white" /> : <Text style={style.text}>MIEMBRO NUEVO</Text>
                 }
             </Button>
         );
-        return <BaseContainer title="Add New Member" navigation={this.props.navigation} scrollable {...{footer}}>
-            <Image source={Images.lists} style={Styles.header}>
+        return <BaseContainer title="Añade Miembro" navigation={this.props.navigation} scrollable {...{footer}}>
+            <Image source={Images.members} style={Styles.header}>
                 <View style={[Styles.center, Styles.flexGrow, Styles.headerMask]}>
-                    <H1 style={{ color: "white" }}>NEW MEMBER</H1>
+                    <H1 style={{ color: "white" }}>MIEMBRO</H1>
                 </View>
             </Image>
             <Field
                 label="Name"
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="default"
                 onChange={firstName => this.store.firstName = firstName}
             />
             <Field
                 label="Last Name"
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="default"
                 onChange={lastName => this.store.lastName = lastName}
             />
             <Field
                 label="Mom's Last Name"
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="default"
                 onChange={momLastName => this.store.momLastName = momLastName}
             />
             <Field
                 label="Phone Number"
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="phone-pad"
                 onChange={phone => this.store.phone = phone}
             />
             <Field
                 label="Email"
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="email-address"
                 onChange={email => this.store.email = email}
             />
         </BaseContainer>;

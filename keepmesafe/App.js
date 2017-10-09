@@ -98,12 +98,12 @@ const MainNavigator = DrawerNavigator({
     Overview: { screen: Overview },
     Groups: { screen: Groups },
     Lists: { screen: Lists },
-    Members: { screen: Members },
-    Police: { screen: Police },
-    Profile: { screen: Profile },
-    Timeline: { screen: Timeline },
-    Settings: { screen: Settings },
-    Create: { screen: Create }
+    Miembros: { screen: Members },
+    Policía: { screen: Police },
+    Perfil: { screen: Profile },
+    Agenda: { screen: Timeline },
+    Configuraciones: { screen: Settings },
+    Añade: { screen: Create }
 }, {
     drawerWidth: Dimensions.get("window").width,
     contentComponent: Drawer

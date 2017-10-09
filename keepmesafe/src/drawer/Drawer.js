@@ -23,7 +23,7 @@ export default class Drawer extends Component {
         const navState = this.props.navigation.state;
         const currentIndex = navState.index;
         const items = navState.routes
-            .filter(route => ["Settings", "Create"].indexOf(route.key) === -1)
+            .filter(route => ["Configuraciones", "Añade"].indexOf(route.key) === -1)
             .map((route, i) =>
                 <DrawerItem key={i} onPress={() => this.go(route.key)} label={route.key} active={currentIndex === i} />
             );
@@ -38,8 +38,8 @@ export default class Drawer extends Component {
                     <View style={style.drawerItems}>{items}</View>
                 </View>
                 <View style={style.row}>
-                    <DrawerIcon label="settings" icon="ios-settings-outline" onPress={() => this.go("Settings")} />
-                    <DrawerIcon label="log out" icon="ios-log-out-outline" onPress={this.logout} />
+                    <DrawerIcon label="configuraciones" icon="ios-settings-outline" onPress={() => this.go("Configuraciones")} />
+                    <DrawerIcon label="salir" icon="ios-log-out-outline" onPress={this.logout} />
                 </View>
             </Container>
         </Image>;
@@ -85,16 +85,16 @@ const style = StyleSheet.create({
         ...WindowDimensions
     },
     container: {
-        backgroundColor: "rgba(101, 99, 164, .9)",
+        backgroundColor: "rgba(101, 99, 164, .4)",
         paddingHorizontal: variables.contentPadding * 1.5,
         paddingVertical: variables.contentPadding * 2.5
     },
     mask: {
-        color: "rgba(255, 255, 255, .5)"
+        color: "rgba(255, 255, 255, .9)"
     },
     closeIcon: {
         fontSize: 50,
-        color: "rgba(255, 255, 255, .5)"
+        color: "rgba(255, 255, 255, .9)"
     },
     row: {
         flexDirection: "row",

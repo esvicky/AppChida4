@@ -4,8 +4,8 @@ import {Asset} from "expo";
 export default class Images {
 
     static login = require("./login1.jpg");
-    static signUp = require("./signUp.jpg");
-    static drawer = require("./drawer.jpg");
+    static signUp = require("./cdmx.jpg");
+    static drawer = require("./city.png");
     static home = require("./home.jpg");
     static lists = require("./lists.jpg");
     static timeline = require("./timeline.jpg");

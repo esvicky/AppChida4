@@ -25,12 +25,12 @@ export default class Members extends Component {
             !loading && <View>
                 <Image source={Images.members} style={Styles.header}>
                     <View style={[Styles.center, Styles.flexGrow, Styles.headerMask]}>
-                        <H1 style={{ color: "white" }}>Lista de Miembros</H1>
+                        <H1 style={{ color: "white" }}>EDITA TUS MIEMBROS</H1>
                     </View>
                 </Image>
                 {
                     !members && <View>
-                        <Text>You don't have any member yet. Please add one.</Text>
+                        <Text>No tienes ningún miembro aún. Añade uno!</Text>
                     </View>
                 }
                 {

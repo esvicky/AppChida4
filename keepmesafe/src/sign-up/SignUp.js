@@ -53,7 +53,7 @@ export default class SignUp extends Component {
                     <Image source={Images.signUp} style={Styles.header}>
                         <Container style={StyleSheet.flatten([Styles.imgMask, Styles.center])}>
                             <View style={style.circle}>
-                                <Icon name="ios-add-outline" style={{fontSize: 75, color: variables.brandInfo}}/>
+                                <Icon name="ios-add-outline" style={{fontSize: 100, color: variables.brandInfo}}/>
                             </View>
                         </Container>
                     </Image>
@@ -104,10 +104,10 @@ export default class SignUp extends Component {
 
 const style = StyleSheet.create({
     circle: {
-        backgroundColor: "white",
-        height: 125,
-        width: 125,
-        borderRadius: 62.5,
+        backgroundColor: "rgba(220, 220, 220, .5)",
+        height: 100,
+        width: 100,
+        borderRadius: 50,
         justifyContent: "center",
         alignItems: "center"
     }
