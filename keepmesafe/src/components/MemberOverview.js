@@ -17,7 +17,7 @@ export default class MemberOverview extends Component {
         const {completed} = this.props;
         return <View style={{ flexDirection: "row" }}>
             <View style={[style.count, Styles.center, { backgroundColor: variables.brandSecondary }]}>
-                <Text style={Styles.whiteText}>MEMBERS</Text>
+                <Text style={Styles.whiteText}>MIEMBROS</Text>
                 <H1 style={StyleSheet.flatten(style.heading)}>{`${completed}`}</H1>
             </View>
         </View>;

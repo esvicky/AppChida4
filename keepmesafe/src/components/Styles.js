@@ -6,7 +6,7 @@ import variables from "../../native-base-theme/variables/commonColor";
 const {width} = Dimensions.get("window");
 const Styles = StyleSheet.create({
     imgMask: {
-        backgroundColor: "rgba(80, 210, 194, .4)"
+        backgroundColor: "rgba(80, 210, 194, .2)"
     },
     headerMask: {
         backgroundColor: "rgba(0, 0, 0, .5)"
