@@ -18,16 +18,10 @@ export default class Profile extends Component {
                 store.user && <View>
                     <View style={[Styles.whiteBg, Styles.center]}>
                         <Avatar size={100} />
-                        <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.user.profile.name}</H1>
+                        <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.user.profile.name.split('/').join(' ')}</H1>
                         <H3 style={{ marginTop: variables.contentPadding }}>{store.user.profile.phone}</H3>
                         <H3 style={{ marginTop: variables.contentPadding }}>{store.user.profile.email}</H3>
                     </View>
-                    <TaskOverview completed={store.completedTaskCount} overdue={store.overdueTaskCount} />
-                    <ScrollView>
-                    {
-                        _.map(store.user.tasks, (task, key) => <Task {...{task, key}} />)
-                    }
-                    </ScrollView>
                     <MemberOverview completed={store.completedMemberCount} />
                     <ScrollView>
                     {

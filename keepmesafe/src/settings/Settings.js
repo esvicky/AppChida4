@@ -30,8 +30,18 @@ export default class Settings extends Component {
                     </ListItem>
                     <Field
                         label="Name"
-                        defaultValue={profile.name}
+                        defaultValue={profile.name.split('/')[0]}
                         onChange={value => this.store.setName(value)}
+                    />
+                    <Field
+                        label="Last Name"
+                        defaultValue={profile.name.split('/')[1]}
+                        onChange={value => this.store.setLastName(value)}
+                    />
+                    <Field
+                        label="Mom's Last Name"
+                        defaultValue={profile.name.split('/')[2]}
+                        onChange={value => this.store.setSecondLastName(value)}
                     />
                     <Field
                         label="Phone"
