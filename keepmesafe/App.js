@@ -93,11 +93,6 @@ export default class App extends Component {
 }
 
 const MainNavigator = DrawerNavigator({
-    Home: { screen: Home },
-    Calendar: { screen: Calendar },
-    Overview: { screen: Overview },
-    Groups: { screen: Groups },
-    Lists: { screen: Lists },
     Members: { screen: Members },
     Police: { screen: Police },
     Profile: { screen: Profile },

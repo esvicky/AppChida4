@@ -10,6 +10,7 @@ export default class Images {
     static lists = require("./lists.jpg");
     static timeline = require("./timeline.png");
     static members = require("./members.png");
+    static phone = require("./authphone.jpg");
 
     static defaultAvatar = require("./avatars/default-avatar.jpg");
     static avatar1 = require("./avatars/avatar-1.jpg");
@@ -31,6 +32,7 @@ export default class Images {
             Asset.fromModule(Images.lists).downloadAsync(),
             Asset.fromModule(Images.timeline).downloadAsync(),
             Asset.fromModule(Images.members).downloadAsync(),
+            Asset.fromModule(Images.phone).downloadAsync(),
 
             Asset.fromModule(Images.defaultAvatar).downloadAsync(),
             Asset.fromModule(Images.avatar1).downloadAsync(),
