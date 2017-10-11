@@ -8,7 +8,7 @@ export default class Images {
     static drawer = require("./city.png");
     static home = require("./home.jpg");
     static lists = require("./lists.jpg");
-    static timeline = require("./timeline.jpg");
+    static timeline = require("./timeline.png");
     static members = require("./members.png");
 
     static defaultAvatar = require("./avatars/default-avatar.jpg");

@@ -20,9 +20,9 @@ export default class Profile extends Component {
                         <Avatar size={100} />
                         <H1 style={{ marginTop: variables.contentPadding * 2 }}>{store.user.profile.name.split('/').join(' ')}</H1>
                         <H3 style={{ marginTop: variables.contentPadding }}>{store.user.profile.phone}</H3>
-                        <H3 style={{ marginTop: variables.contentPadding }}>{store.user.profile.email}</H3>
+                        <H3 style={{ margin: variables.contentPadding }}>{store.user.profile.email}</H3>
                     </View>
-                    <MemberOverview completed={store.completedMemberCount} />
+                    <MemberOverview completed={store.memberCount} />
                     <ScrollView>
                     {
                         _.map(store.user.members, (member, key) => <Member {...{member, key}} />)

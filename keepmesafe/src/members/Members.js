@@ -38,7 +38,7 @@ export default class Members extends Component {
                         members,
                         (item, key) => <Item
                             key={key}
-                            name={item.name}
+                            name={item.name.split('/').join(' ')}
                             done={item.done}
                             onToggle={done => this.store.toggleItem(key, done)}
                         />
