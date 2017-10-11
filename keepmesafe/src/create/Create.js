@@ -24,7 +24,6 @@ export default class Create extends Component {
     async save(): Promise<void> {
         try {
             await this.store.save();
-            const {datetime} = this.store;
             this.props.navigation.navigate("Members");
         } catch(e) {
             alert(e.message);

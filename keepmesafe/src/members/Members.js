@@ -3,7 +3,7 @@ import * as _ from "lodash";
 import autobind from "autobind-decorator";
 import React, {Component} from "react";
 import {StyleSheet, Image, View, Text} from "react-native";
-import {H1, Button, Icon} from "native-base";
+import {H1, H3, Button, Icon} from "native-base";
 import {observable, action} from "mobx";
 import {observer} from "mobx-react/native";
 
@@ -30,16 +30,16 @@ export default class Members extends Component {
                 </Image>
                 {
                     !members && <View>
-                        <Text>No tienes ningún miembro aún. Añade uno!</Text>
+                        <H3>No tienes ningún miembro aún. Añade uno!</H3>
                     </View>
                 }
                 {
                     _.map(
                         members,
-                        (item, key) => <Item
+                        (member, key) => <Item
                             key={key}
-                            name={item.name.split('/').join(' ')}
-                            done={item.done}
+                            name={member.name.split('/').join(' ')}
+                            done={member.done}
                             onToggle={done => this.store.toggleItem(key, done)}
                         />
                     )

@@ -15,6 +15,41 @@ export default class MemberStore {
     @computed get loading(): boolean { return this._loading; }
     set loading(loading: boolean) { this._loading = loading; }
 
+    setName = debounce(1000, (key: string, newName: string) => {
+        Firebase.getUser().then(user => {
+            let [name, lastName, secondLastName] = user.members.key.name.split('/');
+            name = newName;
+            console.log(name);
+            var newFullName = [name, lastName, secondLastName].join('/');
+            Firebase.userRef.child(`members/${key}/name`).set(newFullName);
+        }).catch(function(e) {
+            console.log(e); // "oh, no!"
+        });
+        
+    });
+
+    setLastName = debounce(1000, (key: string, newLastName: string) => {
+        Firebase.getUser().then(user => {
+            let [name, lastName, secondLastName] = user.members.key.name.split('/');
+            lastName = newLastName;
+            var newFullName = [name, lastName, secondLastName].join('/');
+            Firebase.userRef.child(`members/${key}/name`).set(newFullName);  
+        }).catch(function(e) {
+            console.log(e); // "oh, no!"
+        });      
+    });
+
+    setSecondLastName = debounce(1000, (key: string, newSecondLastName: string) => {
+        Firebase.getUser().then(user => {
+            let [name, lastName, secondLastName] = user.members.key.name.split('/');
+            secondLastName = newSecondLastName;
+            var newFullName = [name, lastName, secondLastName].join('/');
+            Firebase.userRef.child(`members/${key}/name`).set(newFullName);   
+        }).catch(function(e) {
+            console.error(e); // "oh, no!"
+        })               
+    });
+
     constructor() {
         Firebase.getUser()
             .then(user => this.members = user.members)
