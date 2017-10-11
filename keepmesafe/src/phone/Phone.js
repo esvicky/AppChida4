@@ -8,4 +8,8 @@ const client = require('twilio')(accountSid, authToken);
 client.lookups.v1
   .phoneNumbers('+525510073148')
   .fetch()
-  .then((number) => console.log(number.carrier.type, number.carrier.name));
+  .then(
+  	(number) => console.log(number.carrier.type, number.carrier.name)
+  	).catch(function(e) {
+            console.log(e); // "oh, no!"
+	});
