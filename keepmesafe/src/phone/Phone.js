@@ -2,11 +2,11 @@
 import autobind from "autobind-decorator";
 import React, {Component} from "react";
 import {View, Text} from "react-native";
-import {Switch, List, ListItem, Body, Right} from "native-base";
+import {Switch, List, ListItem, Body, Right, H1} from "native-base";
 import {observable, action} from "mobx";
 import { observer } from "mobx-react/native";
 
-import PhoneStore from "./SettingsStore";
+import PhoneStore from "./PhoneStore";
 
 import {BaseContainer, Styles, Avatar, Field} from "../components";
 
@@ -14,6 +14,7 @@ import variables from "../../native-base-theme/variables/commonColor";
 
 @observer
 export default class Phone extends Component {
+
 	store = new PhoneStore();
 
 	render(): React$Element<*> {
@@ -21,7 +22,7 @@ export default class Phone extends Component {
         return <BaseContainer title="Phone" navigation={this.props.navigation} scrollable>
             <Image source={Images.phone} style={Styles.header}>
                 <View style={[Styles.imgMask, Styles.center, Styles.flexGrow]}>
-                    <Text style={Styles.whiteText}>{store.memberCount} MEMBERS</Text>
+                    <H1 style={Styles.whiteText}>CELULAR</H1>
                 </View>
             </Image>
             {

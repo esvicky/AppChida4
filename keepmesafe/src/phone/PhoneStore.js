@@ -17,15 +17,14 @@ export default class PhoneStore {
 
     setPhone = debounce(1000, (phone: string) => {
 
-    	client.lookups.v1
-	  	.phoneNumbers(phone).fetch()
-	  	.then(
-	  	(number) => console.log(number.carrier.type, number.carrier.name)
-	  	).catch(function(e) {
-	            console.log(e); // "oh, no!"
-		});
+    	client.lookups.v1.phoneNumbers(phone).fetch()
+    	  	.then({
+                (number) => console.log(number.carrier.type, number.carrier.name)
+                Firebase.userRef.child("profile/phone").set(phone);
 
-        Firebase.userRef.child("profile/phone").set(phone);
+            }).catch(function(e) {
+    	            console.log(e); // "oh, no!"
+    		});
     });
 
     constructor() {
