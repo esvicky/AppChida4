@@ -27,9 +27,9 @@ export default class Member extends Component {
                 timeline && <MemberStatus {...{ timeline, completed, height }} />
             }
             <View style={style.name}>
-                <H3>{name}</H3>
-                <Text style={style.gray}>{email}</Text>
-                <Text style={style.gray}>{phone}</Text>
+                <H3>Nombre: {name.split('/').join(' ')}</H3>
+                <Text style={style.gray}>Correo: {email}</Text>
+                <Text style={style.gray}>Celular: {phone}</Text>
             </View>
             {
                 !timeline && <MemberStatus {...{ completed, height }} />

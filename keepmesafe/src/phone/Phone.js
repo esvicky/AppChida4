@@ -1,15 +1,18 @@
-// Download the Node helper library from twilio.com/docs/node/install
-// These are your accountSid and authToken from https://www.twilio.com/console
-const accountSid = 'AC189fad9eef9a38b7c137caa7a4b9273b';
-const authToken = 'a5cc77d84f5b391b152f79c24a07a082';
+// @flow
+import autobind from "autobind-decorator";
+import React, {Component} from "react";
+import {View, Text} from "react-native";
+import {Switch, List, ListItem, Body, Right} from "native-base";
+import {observable, action} from "mobx";
+import { observer } from "mobx-react/native";
 
-const client = require('twilio')(accountSid, authToken);
+import SettingsStore from "./SettingsStore";
 
-client.lookups.v1
-  .phoneNumbers('+525510073148')
-  .fetch()
-  .then(
-  	(number) => console.log(number.carrier.type, number.carrier.name)
-  	).catch(function(e) {
-            console.log(e); // "oh, no!"
-	});
+import {BaseContainer, Styles, Avatar, Field} from "../components";
+
+import variables from "../../native-base-theme/variables/commonColor";
+
+@observer
+export default class Phone extends Component {
+
+}
