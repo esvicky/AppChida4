@@ -16,8 +16,7 @@ export default class PhoneStore {
     set profile(profile: Profile) { this._profile = profile; }
 
     setPhone = debounce(1000, (phone: string) => {
-
-    	client.lookups.v1.phoneNumbers(phone).fetch()
+    	client.lookups.v1.phoneNumbers('+15108675309').fetch()
     	  	.then({
                 (number) => console.log(number.carrier.type, number.carrier.name)
                 Firebase.userRef.child("profile/phone").set(phone);

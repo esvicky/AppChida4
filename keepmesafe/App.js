@@ -24,6 +24,7 @@ import {Profile} from "./src/profile";
 import {Timeline} from "./src/timeline";
 import {Settings} from "./src/settings";
 import {Create} from "./src/create";
+//import {Phone} from "./src/phone";
 import MainStore from "./src/MainStore";
 
 import getTheme from "./native-base-theme/components";
@@ -93,9 +94,10 @@ export default class App extends Component {
 }
 
 const MainNavigator = DrawerNavigator({
+    Profile: { screen: Profile },
+    //Phone: { screen: Phone },
     Members: { screen: Members },
     Police: { screen: Police },
-    Profile: { screen: Profile },
     Timeline: { screen: Timeline },
     Settings: { screen: Settings },
     Create: { screen: Create }

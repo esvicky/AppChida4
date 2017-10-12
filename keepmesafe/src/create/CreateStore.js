@@ -63,7 +63,7 @@ export default class CreateStore {
             this.loading = false;
             throw new Error("Email field required");
         }
-        const member: Member = {name: `${firstName}/${lastName}/${momLastName}`, phone, email, done};
+        const member: Member = {name: `${firstName}/${lastName}/${momLastName}`, phone, email, done:true};
         await Firebase.userRef.child("members").push(member);
         this.loading = false;
     }

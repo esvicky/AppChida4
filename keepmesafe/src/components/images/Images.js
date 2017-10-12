@@ -6,8 +6,6 @@ export default class Images {
     static login = require("./login.jpg");
     static signUp = require("./cdmx.jpg");
     static drawer = require("./city.png");
-    static home = require("./home.jpg");
-    static lists = require("./lists.jpg");
     static timeline = require("./timeline.png");
     static members = require("./members.png");
     static phone = require("./authphone.jpg");
@@ -28,8 +26,6 @@ export default class Images {
             Asset.fromModule(Images.login).downloadAsync(),
             Asset.fromModule(Images.signUp).downloadAsync(),
             Asset.fromModule(Images.drawer).downloadAsync(),
-            Asset.fromModule(Images.home).downloadAsync(),
-            Asset.fromModule(Images.lists).downloadAsync(),
             Asset.fromModule(Images.timeline).downloadAsync(),
             Asset.fromModule(Images.members).downloadAsync(),
             Asset.fromModule(Images.phone).downloadAsync(),
