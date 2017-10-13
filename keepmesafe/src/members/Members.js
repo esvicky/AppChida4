@@ -74,7 +74,7 @@ class Item extends Component {
     }
 
     render(): React$Element<*>  {
-        const {name} = this.props;
+        const {name, phone, email} = this.props;
         const btnStyle ={ backgroundColor: this.done ? variables.brandInfo : variables.lightGray };
         return <View style={Styles.listItem}>
             <Button transparent
