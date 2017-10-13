@@ -105,7 +105,7 @@ const style = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        paddingVertical: variables.contentPadding * 6
+        paddingVertical: variables.contentPadding * 16
     },
     drawerItems: {
         flex: 1,
