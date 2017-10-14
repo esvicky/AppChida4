@@ -45,23 +45,23 @@ export default class CreateStore {
         const {firstName, lastName, momLastName, phone, email, done} = this;
         if (firstName === "") {
             this.loading = false;
-            throw new Error("Name field required");
+            throw new Error("Nombre requirido");
         }
         if (lastName === ""){
             this.loading = false;
-            throw new Error("Last firstName field required");
+            throw new Error("Apellido Paterno requerido");
         }
         if (momLastName === ""){
             this.loading = false;
-            throw new Error("Mom's last firstName field required");
+            throw new Error("Apellido Materno requerido");
         }
         if (phone === "") {
             this.loading = false;
-            throw new Error("Phone field required");
+            throw new Error("Número de teléfono requerido");
         }
         if (email === "") {
             this.loading = false;
-            throw new Error("Email field required");
+            throw new Error("Email requerido");
         }
         const member: Member = {name: `${firstName}/${lastName}/${momLastName}`, phone, email, done:true};
         await Firebase.userRef.child("members").push(member);
