@@ -59,7 +59,7 @@ export default class CreateStore {
             this.loading = false;
             throw new Error("Phone field required");
         }
-        if (email === "") {
+        if (email === "" && ( !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(valor3)) )) {
             this.loading = false;
             throw new Error("Email field required");
         }
