@@ -51,6 +51,14 @@ export default class MemberStore {
         })               
     });
 
+    setPhone = debounce(1000, (key: string, phone: string) => {
+        Firebase.userRef.child(`members/${key}/phone`).set(phone);
+    });
+
+    setEmail = debounce(1000, (key: string, email: string) => {
+        Firebase.userRef.child(`members/${key}/email`).set(email);
+    });
+
     constructor() {
         Firebase.getUser()
             .then(user => this.members = user.members)
@@ -59,5 +67,9 @@ export default class MemberStore {
 
     toggleItem(key: string, done: boolean) {
         Firebase.userRef.child(`members/${key}/done`).set(done);
+    }
+
+    deleteMember(key: string, done: boolean) {
+        Firebase.userRef.child(`members/${key}`).remove();
     }
 }
