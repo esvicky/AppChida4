@@ -38,11 +38,10 @@ export default class Members extends Component {
                         members,
                         (member, key) => <Member
                             key={key}
-                            name={member.name.split('/').join(' ')}
+                            name={member.name}
                             phone={member.phone}
                             email={member.email}
-                            done={member.done}
-                            onToggle={done => this.store.toggleItem(key, done)}
+                            onToggle={a}
                         />
                     )
                 }
@@ -59,7 +58,6 @@ class Member extends Component {
         name: string,
         phone: string,
         email: string,
-        done?: boolean,
         onToggle: boolean => void
     }
 
@@ -67,7 +65,7 @@ class Member extends Component {
 
     componentWillMount() {
         const {done} = this.props;
-        this.done = !!done;
+        this.done = !!done; 
     }
 
     @autobind @action
@@ -87,7 +85,7 @@ class Member extends Component {
                 {this.done ? <Icon name="md-checkmark" style={{ color: "white" }} /> : undefined}
             </Button>
             <View style={[Styles.center, style.title]}>
-                <Text style={{ color: this.done ? variables.gray : variables.black }}>{name}</Text>
+                <Text style={{ color: this.done ? variables.gray : variables.black }}>{name.split('/').join(' ')}</Text>
                 <Text style={{ color: this.done ? variables.gray : variables.black }}>{phone}</Text>
                 <Text style={{ color: this.done ? variables.gray : variables.black }}>{email}</Text>
             </View>
