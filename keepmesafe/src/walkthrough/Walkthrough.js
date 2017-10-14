@@ -32,7 +32,7 @@ export default class Walkthrough extends Component {
         },
         {
             color: variables.brandInfo,
-            label: "Es facil y rápido"
+            label: "Es fácil y rápido"
         }
     ];
 

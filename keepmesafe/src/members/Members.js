@@ -36,7 +36,7 @@ export default class Members extends Component {
                 {
                     _.map(
                         members,
-                        (member, key) => <Item
+                        (member, key) => <Member
                             key={key}
                             name={member.name.split('/').join(' ')}
                             phone={member.phone}
@@ -53,7 +53,7 @@ export default class Members extends Component {
 }
 
 @observer
-class Item extends Component {
+class Member extends Component {
 
     props: {
         name: string,
