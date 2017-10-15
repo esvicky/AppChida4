@@ -3,10 +3,10 @@
         "sdkVersion": "16.0.0",
         "orientation": "portrait",
         "privacy": "public",
-        "icon": "./kms.png",
+        "icon": "./appkms.png",
         "primaryColor": "#50D2C2",
         "loading": {
-            "backgroundImage": "./splash.png",
+            "backgroundImage": "./loading2.png",
             "hideExponentText": true
         },
         "androidStatusBarColor": "#50D2C2",

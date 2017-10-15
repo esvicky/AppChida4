@@ -1,6 +1,7 @@
 // @flow
 import {observable, computed} from "mobx";
 import {debounce} from "throttle-debounce";
+import {Alert} from 'react-native';
 
 import type {Members} from "../Model";
 import {Firebase} from "../components";
@@ -66,10 +67,13 @@ export default class MemberStore {
     }
 
     toggleItem(key: string, done: boolean) {
+        Alert.alert('Something',null,
+            [{text: 'Editar', onPress: () => console.log('Editar')},
+            {text: 'Eliminar', onPress: () => console.log('Eliminar')}]);
         Firebase.userRef.child(`members/${key}/done`).set(done);
     }
 
-    deleteMember(key: string, done: boolean) {
+    deleteMember(key: string) {
         Firebase.userRef.child(`members/${key}`).remove();
     }
 }

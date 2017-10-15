@@ -41,7 +41,7 @@ export default class Members extends Component {
                             name={member.name}
                             phone={member.phone}
                             email={member.email}
-                            onToggle={a}
+                            onToggle={done => this.store.toggleItem(key, done)}
                         />
                     )
                 }
