@@ -59,7 +59,7 @@ export default class CreateStore {
             this.loading = false;
             throw new Error("Número de teléfono requerido");
         }
-        if (email === "" && ( !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(valor3)) )) {
+        if (email === "" && ( !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email)) )) {
             this.loading = false;
             throw new Error("Email requerido");
         }

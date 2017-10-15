@@ -49,7 +49,7 @@ export default class Login extends React.Component {
                         <View style={style.logo}>
                             <View>
                                 <Mark />
-                                <H1 style={StyleSheet.flatten(style.title)}>Get Started!</H1>
+                                <H1 style={StyleSheet.flatten(style.title)}>Bienvenido</H1>
                             </View>
                         </View>
                         <View style={style.blur}>
@@ -63,7 +63,7 @@ export default class Login extends React.Component {
                                 inverse
                             />
                             <Field
-                                label="Password"
+                                label="Contraseña"
                                 secureTextEntry
                                 autoCapitalize="none"
                                 autoCorrect={false}
@@ -76,17 +76,17 @@ export default class Login extends React.Component {
                             <View>
                                 <View>
                                     <Button primary full onPress={this.signIn}>
-                                    {this.store.loading ? <Spinner color="white" /> : <Text>Sign In</Text>}
+                                    {this.store.loading ? <Spinner color="white" /> : <Text>Inicia Sesión</Text>}
                                     </Button>
                                 </View>
                                 <View>
                                     <Button transparent full onPress={this.signUp}>
-                                        <Small style={{color: "white"}}>Don't have an account? Sign Up</Small>
+                                        <Small style={{color: "white"}}>No tienes cuenta aún? Regístrate.</Small>
                                     </Button>
                                 </View>
                                 <View>
                                     <Button transparent full onPress={this.forgotPassword}>
-                                        <Small style={{color: "white"}}>Forgot password?</Small>
+                                        <Small style={{color: "white"}}>Olvidaste tu contraseña?</Small>
                                     </Button>
                                 </View>
                             </View>

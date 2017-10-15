@@ -58,21 +58,21 @@ export default class SignUp extends Component {
                         </Container>
                     </Image>
                     <Field
-                        label="Name"
+                        label="Nombre"
                         autoCorrect={false}
                         autoCapitalize="none"
                         keyboardType="default"
                         onChange={name => this.store.name = name}
                     />
                     <Field
-                        label="Last Name"
+                        label="Apellido Paterno"
                         autoCorrect={false}
                         autoCapitalize="none"
                         keyboardType="default"
                         onChange={lastName => this.store.lastName = lastName}
                     />
                     <Field
-                        label="Mom's Last Name"
+                        label="Apellido Materno"
                         autoCorrect={false}
                         autoCapitalize="none"
                         keyboardType="default"
@@ -86,7 +86,7 @@ export default class SignUp extends Component {
                         onChange={email => this.store.email = email}
                     />
                     <Field
-                        label="Password"
+                        label="Contraseña"
                         autoCorrect={false}
                         autoCapitalize="none"
                         onChange={password => this.store.password = password}
