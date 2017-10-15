@@ -2,7 +2,7 @@
 import * as _ from "lodash";
 import autobind from "autobind-decorator";
 import React, {Component} from "react";
-import {StyleSheet, Image, View, Text} from "react-native";
+import {StyleSheet, Image, View, Text, Alert} from "react-native";
 import {H1, H3, Button, Icon} from "native-base";
 import {observable, action} from "mobx";
 import {observer} from "mobx-react/native";
@@ -42,6 +42,7 @@ export default class Members extends Component {
                             phone={member.phone}
                             email={member.email}
                             onToggle={done => this.store.toggleItem(key, done)}
+                            onDelete={member => this.store.deleteMember(key)}
                         />
                     )
                 }
@@ -70,9 +71,20 @@ class Member extends Component {
 
     @autobind @action
     toggle() {
-        const {onToggle} = this.props;
+        /*const {onToggle} = this.props;
         this.done = !this.done;
-        onToggle(this.done);
+        onToggle(this.done);*/
+        Alert.alert('Something',null,
+            [{text: 'Editar', onPress:this.edit},
+            {text: 'Eliminar', onPress:this.delete}]);
+    }
+
+    edit() {
+        console.log('Presiono el botón editar');
+    }
+
+    delete(){
+        console.log('Quiere eliminar al miembro');
     }
 
     render(): React$Element<*>  {
@@ -86,8 +98,6 @@ class Member extends Component {
             </Button>
             <View style={[Styles.center, style.title]}>
                 <Text style={{ color: this.done ? variables.gray : variables.black }}>{name.split('/').join(' ')}</Text>
-                <Text style={{ color: this.done ? variables.gray : variables.black }}>{phone}</Text>
-                <Text style={{ color: this.done ? variables.gray : variables.black }}>{email}</Text>
             </View>
         </View>;
     }

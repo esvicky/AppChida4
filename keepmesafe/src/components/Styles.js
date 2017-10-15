@@ -43,7 +43,8 @@ const Styles = StyleSheet.create({
     listItem: {
         flexDirection: "row",
         borderBottomWidth: variables.borderWidth,
-        borderColor: variables.listBorderColor
+        borderColor: variables.listBorderColor,
+        alignItems: 'stretch'
     }
 });
 

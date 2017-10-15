@@ -67,9 +67,6 @@ export default class MemberStore {
     }
 
     toggleItem(key: string, done: boolean) {
-        Alert.alert('Something',null,
-            [{text: 'Editar', onPress: () => console.log('Editar')},
-            {text: 'Eliminar', onPress: () => console.log('Eliminar')}]);
         Firebase.userRef.child(`members/${key}/done`).set(done);
     }
 
