@@ -90,7 +90,6 @@ export default class App extends Component {
 
 const MainNavigator = DrawerNavigator({
     Profile: { screen: Profile },
-    Phone: { screen: Phone },
     Members: { screen: Members },
     Police: { screen: Police },
     Timeline: { screen: Timeline },
@@ -112,6 +111,7 @@ const PrivateNavigator = StackNavigator({
 }, navigatorOptions);
 
 const PublicNavigator = StackNavigator({
+    Phone: { screen: Phone },
     Walkthrough: { screen: Walkthrough },
     Main: { screen: MainNavigator }
 }, navigatorOptions);

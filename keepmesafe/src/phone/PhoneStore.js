@@ -34,14 +34,19 @@ export default class PhoneStore {
     async save(): Promise<void> {
         this.loading = true;
         const {phone} = this;
-        if (phone === "") {
+        try{
+            if (phone === "") {
+                this.loading = false;
+                throw new Error("Número de teléfono requerido");
+            }else if(!this.validatePhone(phone)){
+                this.loading = false;
+                throw new Error("Número de teléfono inválido");
+            }
+            await Firebase.userRef.child("profile/phone").set(phone);
             this.loading = false;
-            throw new Error("Número de teléfono requerido");
-        }else if(!this.validatePhone(phone)){
+        } catch(e) {
             this.loading = false;
-            throw new Error("Número de teléfono inválido");
+            throw e;
         }
-        await Firebase.userRef.child("profile/phone").set(phone);
-        this.loading = false;
     }
 }

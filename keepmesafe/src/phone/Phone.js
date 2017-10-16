@@ -3,7 +3,7 @@ import autobind from "autobind-decorator";
 import React, {Component} from "react";
 import {observer} from "mobx-react/native";
 import {StyleSheet, View, Text, Image} from "react-native";
-import {H1, Button, Spinner, List, ListItem} from "native-base";
+import {H1, Button, Spinner} from "native-base";
 
 import PhoneStore from "./PhoneStore";
 

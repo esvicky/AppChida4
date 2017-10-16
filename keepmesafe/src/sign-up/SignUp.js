@@ -30,6 +30,7 @@ export default class SignUp extends Component {
     async signIn(): Promise<void> {
         try {
             await this.store.signIn();
+            this.props.navigation.navigate("Phone");
         } catch (e) {
             alert(e.message);
         }
