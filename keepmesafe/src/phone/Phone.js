@@ -1,43 +1,69 @@
 // @flow
 import autobind from "autobind-decorator";
 import React, {Component} from "react";
-import {View, Text} from "react-native";
-import {Switch, List, ListItem, Body, Right, H1} from "native-base";
-import {observable, action} from "mobx";
-import { observer } from "mobx-react/native";
+import {observer} from "mobx-react/native";
+import {StyleSheet, View, Text, Image} from "react-native";
+import {H1, Button, Spinner, List, ListItem} from "native-base";
 
 import PhoneStore from "./PhoneStore";
 
-import {BaseContainer, Styles, Avatar, Field} from "../components";
+import {BaseContainer, Styles, Images, Field, WindowDimensions} from "../components";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
 @observer
 export default class Phone extends Component {
 
-	store = new PhoneStore();
+	store = PhoneStore;
+
+    componentWillMount() {
+        this.store = new PhoneStore();
+    }
+
+    @autobind
+    async save(): Promise<void> {
+        try {
+            await this.store.save();
+            this.props.navigation.navigate("Profile");
+        } catch(e) {
+            alert(e.message);
+        }
+    }
 
 	render(): React$Element<*> {
-        const {profile} = this.store;
-        return <BaseContainer title="Phone" navigation={this.props.navigation} scrollable>
+        const footer = (
+            <Button primary full onPress={this.save}>
+                {
+                    this.store.loading ? <Spinner color="white" /> : <Text style={style.h1}>REGISTRAR TELEFONO</Text>
+                }
+            </Button>
+        );
+        return <BaseContainer title="Phone" navigation={this.props.navigation} scrollable {...{footer}}>
             <Image source={Images.phone} style={Styles.header}>
                 <View style={[Styles.imgMask, Styles.center, Styles.flexGrow]}>
-                    <H1 style={Styles.whiteText}>CELULAR</H1>
+                    <H1 style={style.h1}>CELULAR</H1>
                 </View>
-            </Image>
-            {
-                profile && <List>
-                    <ListItem itemDivider>
-                        <Text>REGISTRA TU CELULAR: (A 8 DIGITOS)</Text>
-                    </ListItem>
-                    <Field
-                        label="Phone"
-                        defaultValue={profile.phone}
-                        onChange={value => this.store.setPhone(value)}
-                    />
-                </List>
-            }
+            </Image>            
+            <Text style={style.text}>REGISTRA TU CELULAR: (A 8 DIGITOS)</Text>
+            <Field
+                label="Telefono"
+                autoCorrect={false}
+                autoCapitalize="none"
+                keyboardType="phone-pad"
+                onChange={phone => this.store.phone = phone}
+            />
         </BaseContainer>;
     }
 
 }
+
+const {width} = WindowDimensions;
+const style = StyleSheet.create({
+    h1: {
+        color: "white"
+    },
+    text: {
+        color: "gray",
+        padding: variables.contentPadding
+    }
+});

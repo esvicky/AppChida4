@@ -40,6 +40,17 @@ export default class CreateStore {
     @computed get done(): boolean { return this._done; }
     set done(done: boolean) { this._done = done; }
 
+    validateEmail = (email) => {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    };
+
+    validatePhone = (phone) => {
+        const newPhone = `+52${phone}`;
+        var re = /\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{10}$/;
+        return re.test(newPhone);
+    };
+
     async save(): Promise<void> {
         this.loading = true;
         const {firstName, lastName, momLastName, phone, email, done} = this;
@@ -58,12 +69,18 @@ export default class CreateStore {
         if (phone === "") {
             this.loading = false;
             throw new Error("Número de teléfono requerido");
+        }else if(!this.validatePhone(phone)){
+            this.loading = false;
+            throw new Error("Número de teléfono inválido");
         }
-        if (email === "" && ( !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email)) )) {
+        if (email === "") {
             this.loading = false;
             throw new Error("Email requerido");
+        }else if (!this.validateEmail(email)){
+            this.loading = false;
+            throw new Error("Email inválido");
         }
-        const member: Member = {name: `${firstName}/${lastName}/${momLastName}`, phone, email, done:true};
+        const member: Member = {name: `${firstName}/${lastName}/${momLastName}`, phone , email, done:true};
         await Firebase.userRef.child("members").push(member);
         this.loading = false;
     }

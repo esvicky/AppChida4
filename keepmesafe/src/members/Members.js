@@ -42,7 +42,6 @@ export default class Members extends Component {
                             phone={member.phone}
                             email={member.email}
                             onToggle={done => this.store.toggleItem(key, done)}
-                            onDelete={member => this.store.deleteMember(key)}
                         />
                     )
                 }
@@ -62,7 +61,7 @@ class Member extends Component {
         onToggle: boolean => void
     }
 
-    @observable done: boolean;
+    @observable done: string;
 
     componentWillMount() {
         const {done} = this.props;
@@ -71,9 +70,9 @@ class Member extends Component {
 
     @autobind @action
     toggle() {
-        /*const {onToggle} = this.props;
+        const {onToggle} = this.props;
         this.done = !this.done;
-        onToggle(this.done);*/
+        onToggle(this.done);
         Alert.alert('Something',null,
             [{text: 'Editar', onPress:this.edit},
             {text: 'Eliminar', onPress:this.delete}]);
@@ -92,13 +91,12 @@ class Member extends Component {
         const btnStyle ={ backgroundColor: this.done ? variables.brandInfo : variables.lightGray };
         return <View style={Styles.listItem}>
             <Button transparent
-                    onPress={this.toggle}
-                    style={StyleSheet.flatten([Styles.center, style.button, btnStyle])}>
-                {this.done ? <Icon name="md-checkmark" style={{ color: "white" }} /> : undefined}
+                onPress={this.toggle}
+                style={StyleSheet.flatten([Styles.stretch, btnStyle])}>
+                <View style={[Styles.center, style.title]}>
+                    <Text style={{ color: this.done ? variables.gray : variables.black }}>{name.split('/').join(' ')}</Text>
+                </View>
             </Button>
-            <View style={[Styles.center, style.title]}>
-                <Text style={{ color: this.done ? variables.gray : variables.black }}>{name.split('/').join(' ')}</Text>
-            </View>
         </View>;
     }
 }

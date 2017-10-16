@@ -1,7 +1,6 @@
 // @flow
 import {observable, computed} from "mobx";
 import {debounce} from "throttle-debounce";
-import {Alert} from 'react-native';
 
 import type {Members} from "../Model";
 import {Firebase} from "../components";
@@ -71,6 +70,8 @@ export default class MemberStore {
     }
 
     deleteMember(key: string) {
-        Firebase.userRef.child(`members/${key}`).remove();
+        console.log(key);
     }
+
+    
 }

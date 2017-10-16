@@ -22,6 +22,12 @@ const Styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center"
     },
+    stretch: {
+        justifyContent: "center",
+        alignItems: "stretch",
+        width,
+        height: 75
+    },
     textCentered: {
         textAlign: "center"
     },

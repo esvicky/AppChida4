@@ -45,28 +45,28 @@ export default class Create extends Component {
                 </View>
             </Image>
             <Field
-                label="Name"
+                label="Nombre(s)"
                 autoCorrect={false}
                 autoCapitalize="none"
                 keyboardType="default"
                 onChange={firstName => this.store.firstName = firstName}
             />
             <Field
-                label="Last Name"
+                label="Apellido Paterno"
                 autoCorrect={false}
                 autoCapitalize="none"
                 keyboardType="default"
                 onChange={lastName => this.store.lastName = lastName}
             />
             <Field
-                label="Mom's Last Name"
+                label="Apellido Materno"
                 autoCorrect={false}
                 autoCapitalize="none"
                 keyboardType="default"
                 onChange={momLastName => this.store.momLastName = momLastName}
             />
             <Field
-                label="Phone Number"
+                label="Teléfono (a 8 dígitos)"
                 autoCorrect={false}
                 autoCapitalize="none"
                 keyboardType="phone-pad"
