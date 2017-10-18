@@ -30,7 +30,6 @@ export default class SignUp extends Component {
     async signIn(): Promise<void> {
         try {
             await this.store.signIn();
-            this.props.navigation.navigate("Phone");
         } catch (e) {
             alert(e.message);
         }
@@ -92,6 +91,13 @@ export default class SignUp extends Component {
                         autoCapitalize="none"
                         onChange={password => this.store.password = password}
                         secureTextEntry
+                    />
+                    <Field
+                        label="Telefono"
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        keyboardType="phone-pad"
+                        onChange={phone => this.store.phone = phone}
                     />
                 </KeyboardAvoidingView>
             </ScrollView>

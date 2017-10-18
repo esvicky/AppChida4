@@ -46,6 +46,7 @@ export default class Settings extends Component {
                     <Field
                         label="Phone"
                         defaultValue={profile.phone}
+                        keyboardType="phone-pad"
                         onChange={value => this.store.setPhone(value)}
                     />
                     <ListItem itemDivider>

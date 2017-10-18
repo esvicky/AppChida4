@@ -48,8 +48,24 @@ export default class SettingsStore {
         })               
     });
 
+    validatePhone = (phone) => {
+        const newPhone = `+52${phone}`;
+        var re = /\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{10}$/;
+        return re.test(newPhone);
+    };
+
     setPhone = debounce(1000, (phone: string) => {
-        Firebase.userRef.child("profile/phone").set(phone);
+        Firebase.getUser().then(user => {
+            console.log(user);
+            let phone1 = user.profile.phone;
+            console.log(phone1);
+            if(!this.validatePhone(phone)){
+                Firebase.userRef.child("profile/phone").set(phone1);
+            }else
+                Firebase.userRef.child("profile/phone").set(phone); 
+        }).catch(function(e) {
+            console.error(e); // "oh, no!"
+        })  
     });
 
     constructor() {
