@@ -5,16 +5,16 @@ import {observer} from "mobx-react/native";
 import {StyleSheet, View, Text, Image} from "react-native";
 import {H1, Button, Spinner} from "native-base";
 
-import PhoneStore from "./PhoneStore";
+import TriggerStore from "./TriggerStore";
 
 import {BaseContainer, Styles, Images, Field, WindowDimensions} from "../components";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
 @observer
-export default class Phone extends Component {
+export default class Trigger extends Component {
 
-	store = PhoneStore;
+	store = TriggerStore;
 
     componentWillMount() {
         this.store = new PhoneStore();
