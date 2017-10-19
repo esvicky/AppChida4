@@ -14,48 +14,41 @@ import variables from "../../native-base-theme/variables/commonColor";
 @observer
 export default class Trigger extends Component {
 
-	store = TriggerStore;
+    store = new TriggerStore();
 
-    componentWillMount() {
-        this.store = new PhoneStore();
-    }
-
-    @autobind
-    async save(): Promise<void> {
-        try {
-            await this.store.save();
-            this.props.navigation.navigate("Profile");
-        } catch(e) {
-            alert(e.message);
-        }
-    }
-
-	render(): React$Element<*> {
-        const footer = (
-            <Button primary full onPress={this.save}>
+    render(): React$Element<*> {
+        const {members, loading} = this.store;
+        return <BaseContainer title="Members" navigation={this.props.navigation} scrollable>
+        {
+            !loading && <View>
+                <Image source={Images.members} style={Styles.header}>
+                    <View style={[Styles.center, Styles.flexGrow, Styles.headerMask]}>
+                        <H1 style={{ color: "white" }}>EDITA TUS MIEMBROS</H1>
+                    </View>
+                </Image>
                 {
-                    this.store.loading ? <Spinner color="white" /> : <Text style={style.h1}>REGISTRAR TELEFONO</Text>
+                    !members && <View>
+                        <H3>No tienes ningún miembro aún. Añade uno!</H3>
+                    </View>
                 }
-            </Button>
-        );
-        return <BaseContainer title="Phone" navigation={this.props.navigation} scrollable {...{footer}}>
-            <Image source={Images.phone} style={Styles.header}>
-                <View style={[Styles.imgMask, Styles.center, Styles.flexGrow]}>
-                    <H1 style={style.h1}>CELULAR</H1>
-                </View>
-            </Image>            
-            <Text style={style.text}>REGISTRA TU CELULAR: (A 8 DIGITOS)</Text>
-            <Field
-                label="Telefono"
-                autoCorrect={false}
-                autoCapitalize="none"
-                keyboardType="phone-pad"
-                onChange={phone => this.store.phone = phone}
-            />
+                {
+                    _.map(
+                        members,
+                        (member, key) => <Member
+                            key={key}
+                            name={member.name}
+                            phone={member.phone}
+                            email={member.email}
+                            onToggle={done => this.store.toggleItem(key, done)}
+                        />
+                    )
+                }
+            </View>
+        }
         </BaseContainer>;
     }
-
 }
+
 
 const {width} = WindowDimensions;
 const style = StyleSheet.create({
