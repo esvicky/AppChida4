@@ -17,34 +17,8 @@ export default class Trigger extends Component {
     store = new TriggerStore();
 
     render(): React$Element<*> {
-        const {members, loading} = this.store;
-        return <BaseContainer title="Members" navigation={this.props.navigation} scrollable>
-        {
-            !loading && <View>
-                <Image source={Images.members} style={Styles.header}>
-                    <View style={[Styles.center, Styles.flexGrow, Styles.headerMask]}>
-                        <H1 style={{ color: "white" }}>EDITA TUS MIEMBROS</H1>
-                    </View>
-                </Image>
-                {
-                    !members && <View>
-                        <H3>No tienes ningún miembro aún. Añade uno!</H3>
-                    </View>
-                }
-                {
-                    _.map(
-                        members,
-                        (member, key) => <Member
-                            key={key}
-                            name={member.name}
-                            phone={member.phone}
-                            email={member.email}
-                            onToggle={done => this.store.toggleItem(key, done)}
-                        />
-                    )
-                }
-            </View>
-        }
+        return <BaseContainer title="Geolocation" navigation={this.props.navigation} scrollable>
+            <GeolocationExample />
         </BaseContainer>;
     }
 }
