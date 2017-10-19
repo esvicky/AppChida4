@@ -61,6 +61,12 @@ export default class SettingsStore {
             console.log(phone1);
             if(!this.validatePhone(phone)){
                 Firebase.userRef.child("profile/phone").set(phone1);
+                try {
+                    alert('Número de teléfono inválido');
+                    this.props.navigation.navigate("Profile");
+                } catch(e) {
+                    alert(e.message);
+                }
             }else
                 Firebase.userRef.child("profile/phone").set(phone); 
         }).catch(function(e) {
