@@ -24,51 +24,51 @@ export default class Trigger extends Component {
 }
 
 @observer
-class GeolocationExample extends Component{
+var GeolocationExample = React.createClass({ 
+    watchID: (null: ?number), 
 
-    watchID: ?number = null;
-    
-    getInitialState() 
-    { 
-        return { initialPosition: 'unknown', lastPosition: 'unknown', }; 
-    }
+    getInitialState: function() { 
+        return { 
+            initialPosition: 'unknown', 
+            lastPosition: 'unknown', 
+        }; 
+    }, 
 
-    componentDidMount() 
-    { 
-        navigator.geolocation.getCurrentPosition( (position) => 
-            { 
+    componentDidMount: function() { 
+        navigator.geolocation.getCurrentPosition( 
+            (position) => { 
                 var initialPosition = JSON.stringify(position); 
                 this.setState({initialPosition}); 
             }, 
-                (error) => alert(error.message), 
-                {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000} 
+            (error) => alert(error.message), 
+            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000} 
         ); 
-        this.watchID = navigator.geolocation.watchPosition((position) => 
-        { 
-            var lastPosition = JSON.stringify(position); 
-            this.setState({lastPosition}); 
-        }); 
-    }
+        this.watchID = navigator.geolocation.watchPosition(
+            (position) => { 
+                var lastPosition = JSON.stringify(position); 
+                this.setState({lastPosition}); 
+            }); 
+    }, 
 
-    componentWillUnmount() 
-    { 
+    componentWillUnmount: function() { 
         navigator.geolocation.clearWatch(this.watchID); 
-    }
+    }, 
 
-    render(): React$Element<*> {
-        return ( <View>
-            <Text>
-                <Text style={style.title}>Initial position: </Text> 
-                {this.state.initialPosition} 
-            </Text> 
-            <Text> 
-                <Text style={style.title}>Current position: </Text> 
-                {this.state.lastPosition} 
-            </Text> 
-        </View> 
+    render: function() { 
+        return ( 
+            <View> 
+                <Text> 
+                    <Text style={styles.title}>Initial position: </Text> 
+                    {this.state.initialPosition} 
+                </Text> 
+                <Text> 
+                    <Text style={styles.title}>Current position: </Text> 
+                    {this.state.lastPosition} 
+                </Text> 
+            </View> 
         ); 
-    }; 
-}
+    } 
+});
 
 
 const {width} = WindowDimensions;
