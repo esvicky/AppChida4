@@ -19,6 +19,7 @@ import {Profile} from "./src/profile";
 import {Timeline} from "./src/timeline";
 import {Settings} from "./src/settings";
 import {Create} from "./src/create";
+import {Trigger} from "./src/trigger";
 import MainStore from "./src/MainStore";
 
 import getTheme from "./native-base-theme/components";
@@ -92,6 +93,7 @@ const MainNavigator = DrawerNavigator({
     Members: { screen: Members },
     Police: { screen: Police },
     Timeline: { screen: Timeline },
+    Trigger: { screen: Trigger },
     Settings: { screen: Settings },
     Create: { screen: Create }
 }, {

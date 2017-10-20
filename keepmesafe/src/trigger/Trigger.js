@@ -17,22 +17,23 @@ export default class Trigger extends Component {
     store = new TriggerStore();
 
     render(): React$Element<*> {
-        return <BaseContainer title="Geolocation" navigation={this.props.navigation} scrollable>
+        return <BaseContainer title="Trigger" navigation={this.props.navigation} scrollable>
             <GeolocationExample />
         </BaseContainer>;
     }
 }
 
 @observer
-class GeolocationExample extends Component({
-    watchID: (null: ?number), 
+class GeolocationExample extends Component{
+
+    watchID: ?number = null;
     
-    getInitialState: function() 
+    getInitialState() 
     { 
         return { initialPosition: 'unknown', lastPosition: 'unknown', }; 
-    },
+    }
 
-    componentDidMount: function() 
+    componentDidMount() 
     { 
         navigator.geolocation.getCurrentPosition( (position) => 
             { 
@@ -47,28 +48,27 @@ class GeolocationExample extends Component({
             var lastPosition = JSON.stringify(position); 
             this.setState({lastPosition}); 
         }); 
-    },
+    }
 
-    componentWillUnmount: function() 
+    componentWillUnmount() 
     { 
         navigator.geolocation.clearWatch(this.watchID); 
-    },
+    }
 
-    render: function() 
-    { 
+    render(): React$Element<*> {
         return ( <View>
             <Text>
-                <Text style={styles.title}>Initial position: </Text> 
+                <Text style={style.title}>Initial position: </Text> 
                 {this.state.initialPosition} 
             </Text> 
             <Text> 
-                <Text style={styles.title}>Current position: </Text> 
+                <Text style={style.title}>Current position: </Text> 
                 {this.state.lastPosition} 
             </Text> 
         </View> 
         ); 
-    } 
-});
+    }; 
+}
 
 
 const {width} = WindowDimensions;

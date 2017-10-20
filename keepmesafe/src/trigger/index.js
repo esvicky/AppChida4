@@ -1,4 +1,4 @@
 // @flow
-import Phone from "./Phone";
+import Trigger from "./Trigger";
 
-export {Phone}
+export {Trigger}
