@@ -23,7 +23,6 @@ export default class Trigger extends Component {
     }
 }
 
-@observer
 var GeolocationExample = React.createClass({ 
     watchID: (null: ?number), 
 
@@ -58,11 +57,11 @@ var GeolocationExample = React.createClass({
         return ( 
             <View> 
                 <Text> 
-                    <Text style={styles.title}>Initial position: </Text> 
+                    <Text style={style.title}>Initial position: </Text> 
                     {this.state.initialPosition} 
                 </Text> 
                 <Text> 
-                    <Text style={styles.title}>Current position: </Text> 
+                    <Text style={style.title}>Current position: </Text> 
                     {this.state.lastPosition} 
                 </Text> 
             </View> 
