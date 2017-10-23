@@ -8,7 +8,7 @@ const DEFAULT_USER = (name: string, email: string): User => ({
         "phone" : "",
         "emailNotifications" : true,
         "phoneNotifications" : true
-    }
+    },
     emergency : {
     	"status" : false
     }
