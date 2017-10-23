@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Platform, Text, View, StyleSheet } from 'react-native';
+import { Platform, Text, View, StyleSheet, TouchableHighlight } from 'react-native';
 import { Constants, Location, Permissions } from 'expo';
 
 import {BaseContainer, Styles, Images} from "../components";
@@ -36,6 +36,7 @@ export default class Trigger extends Component {
     };
 
     render(): React$Element<*> {
+        
         let text = 'Waiting..';
         if (this.state.errorMessage) {
             text = this.state.errorMessage;
@@ -46,19 +47,20 @@ export default class Trigger extends Component {
         return <BaseContainer title="Trigger" navigation={this.props.navigation} scrollable>
         {
             <View style={styles.container}>
-                <Text style={styles.paragraph}>{text}</Text>
+                <TouchableHighlight style={styles.button} onPress={alert(text)}>
+                    <Text>PRESS ME!</Text>
+                </TouchableHighlight>
             </View>
         }
         </BaseContainer>;
     }
 }
-
+const size: number = 200;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: Constants.statusBarHeight,
     backgroundColor: '#ecf0f1',
   },
   paragraph: {
@@ -66,4 +68,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
   },
+  button: {
+    width: size,
+    height: size,
+    borderRadius: size / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "rgba(255,99,71, .5)"
+  }
 });

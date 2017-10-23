@@ -9,10 +9,22 @@ path /police is Police {
 }
 
 type Members extends Member[] {}
+type Tracks extends Track[] {}
 
 type User {
+    emergency: Emergency,
     profile: Profile,
     members: Members
+}
+
+type Emergency {
+    status: Boolean,
+    tracking: Tracks
+}
+
+type Track {
+    lat: String,
+    long: String
 }
 
 type Profile {
