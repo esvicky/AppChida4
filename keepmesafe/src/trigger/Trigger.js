@@ -1,85 +1,69 @@
 // @flow
-import autobind from "autobind-decorator";
-import React, {Component} from "react";
-import {observer} from "mobx-react/native";
-import {StyleSheet, View, Text, Image} from "react-native";
-import {H1, Button, Spinner} from "native-base";
+import React, { Component } from 'react';
+import { Platform, Text, View, StyleSheet } from 'react-native';
+import { Constants, Location, Permissions } from 'expo';
 
-import TriggerStore from "./TriggerStore";
-
-import {BaseContainer, Styles, Images, Field, WindowDimensions} from "../components";
+import {BaseContainer, Styles, Images} from "../components";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
-@observer
 export default class Trigger extends Component {
+    state = {
+        location: null,
+        errorMessage: null,
+    };
 
-    store = new TriggerStore();
+    componentWillMount() {
+        if (Platform.OS === 'android' && !Constants.isDevice) {
+            this.setState({
+                errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
+            });
+        } else {
+            this._getLocationAsync();
+        }
+    }
+
+    _getLocationAsync = async () => {
+        let { status } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status !== 'granted') {
+            this.setState({
+                errorMessage: 'Permission to access location was denied',
+            });
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+            this.setState({ location });
+    };
 
     render(): React$Element<*> {
+        let text = 'Waiting..';
+        if (this.state.errorMessage) {
+            text = this.state.errorMessage;
+        } else if (this.state.location) {
+            text = JSON.stringify(this.state.location);
+        }
+
         return <BaseContainer title="Trigger" navigation={this.props.navigation} scrollable>
-            <GeolocationExample />
+        {
+            <View style={styles.container}>
+                <Text style={styles.paragraph}>{text}</Text>
+            </View>
+        }
         </BaseContainer>;
     }
 }
 
-var GeolocationExample = React.createClass({ 
-    watchID: (null: ?number), 
-
-    getInitialState: function() { 
-        return { 
-            initialPosition: 'unknown', 
-            lastPosition: 'unknown', 
-        }; 
-    }, 
-
-    componentDidMount: function() { 
-        navigator.geolocation.getCurrentPosition( 
-            (position) => { 
-                var initialPosition = JSON.stringify(position); 
-                this.setState({initialPosition}); 
-            }, 
-            (error) => alert(error.message), 
-            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000} 
-        ); 
-        this.watchID = navigator.geolocation.watchPosition(
-            (position) => { 
-                var lastPosition = JSON.stringify(position); 
-                this.setState({lastPosition}); 
-            }); 
-    }, 
-
-    componentWillUnmount: function() { 
-        navigator.geolocation.clearWatch(this.watchID); 
-    }, 
-
-    render: function() { 
-        return ( 
-            <View> 
-                <Text> 
-                    <Text style={style.title}>Initial position: </Text> 
-                    {this.state.initialPosition} 
-                </Text> 
-                <Text> 
-                    <Text style={style.title}>Current position: </Text> 
-                    {this.state.lastPosition} 
-                </Text> 
-            </View> 
-        ); 
-    } 
-});
-
-
-const {width} = WindowDimensions;
-const style = StyleSheet.create({
-    h1: {
-        color: "white"
-    },
-    text: {
-        color: "gray",
-        padding: variables.contentPadding
-    },
-    title: { 
-        fontWeight: '500' 
-    }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: '#ecf0f1',
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    textAlign: 'center',
+  },
 });
