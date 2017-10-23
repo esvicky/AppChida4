@@ -23,8 +23,8 @@ type Emergency {
 }
 
 type Track {
-    lat: String,
-    long: String
+    lat: Number,
+    long: Number
 }
 
 type Profile {
