@@ -1,17 +1,31 @@
 // @flow
+import autobind from "autobind-decorator";
 import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, TouchableHighlight } from 'react-native';
+import {Container, Button, Header, Left, Right, Body, Icon, Title, Spinner} from "native-base";
 import { Constants, Location, Permissions } from 'expo';
+import TriggerStore from './TriggerStore';
 
 import {BaseContainer, Styles, Images} from "../components";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
 export default class Trigger extends Component {
+    store = new TriggerStore();
+
     state = {
         location: null,
         errorMessage: null,
     };
+
+    @autobind
+    async demo(): Promise<void> {
+        try {
+            await this.store.demo();
+        } catch (e) {
+            alert(e.message);
+        }
+    }
 
     componentWillMount() {
         if (Platform.OS === 'android' && !Constants.isDevice) {
@@ -50,6 +64,8 @@ export default class Trigger extends Component {
                 <TouchableHighlight style={styles.button} onPress={alert(text)}>
                     <Text>PRESS ME!</Text>
                 </TouchableHighlight>
+
+                <Button style={styles.button} onPress={this.demo}></Button>
             </View>
         }
         </BaseContainer>;
@@ -58,7 +74,6 @@ export default class Trigger extends Component {
 const size: number = 200;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#ecf0f1',
@@ -74,6 +89,6 @@ const styles = StyleSheet.create({
     borderRadius: size / 2,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "rgba(255,99,71, .5)"
+    backgroundColor: "rgba(255,0,0, .2)"
   }
 });

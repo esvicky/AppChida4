@@ -21,4 +21,16 @@ export default class TriggerStore {
             .then(user => this.members = user.members)
             .then(() => this.loading = false);
     }
+
+    sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async demo() {
+        let begin = true;
+            console.log('Taking a break...');
+            await this.sleep(2000);
+            console.log('Two second later');
+            
+    }
 }

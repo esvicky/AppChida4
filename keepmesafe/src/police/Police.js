@@ -2,7 +2,7 @@
 import React, {Component} from "react";
 import * as _ from "lodash";
 import {View, ScrollView} from "react-native";
-import {H1, H2, H3, H4, H5, H6} from "native-base";
+import {H1, H2, H3} from "native-base";
 import {inject, observer} from "mobx-react/native";
 
 import {BaseContainer, Avatar, Styles} from "../components";
