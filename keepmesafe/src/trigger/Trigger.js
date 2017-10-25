@@ -27,6 +27,10 @@ export default class Trigger extends Component {
         }
     }
 
+    emergency() {
+        return alert('¡Presionaste el botón de emergencia!');
+    }
+
     componentWillMount() {
         if (Platform.OS === 'android' && !Constants.isDevice) {
             this.setState({
@@ -58,25 +62,32 @@ export default class Trigger extends Component {
             text = JSON.stringify(this.state.location);
         }
 
+        console.log(text);
+
         return <BaseContainer title="Trigger" navigation={this.props.navigation} scrollable>
         {
             <View style={styles.container}>
-                <TouchableHighlight style={styles.button} onPress={alert(text)}>
-                    <Text>PRESS ME!</Text>
-                </TouchableHighlight>
-
-                <Button style={styles.button} onPress={this.demo}></Button>
+                <View  style={styles.button}>
+                    <TouchableHighlight style={styles.pressbutton} onPress={this.emergency}>
+                        <Text>PRESS ME!</Text>
+                    </TouchableHighlight>
+                </View>
+                
+                <View  style={styles.button}>
+                    <TouchableHighlight style={styles.pressbutton} onPress={this.demo}>
+                        <Text>This Sleeper</Text>
+                    </TouchableHighlight>
+                </View>
             </View>
         }
         </BaseContainer>;
     }
 }
-const size: number = 200;
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
   },
   paragraph: {
     margin: 24,
@@ -84,11 +95,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    width: size,
-    height: size,
-    borderRadius: size / 2,
+    width: 200,
+    height: 200,
+    borderRadius: 100,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: "rgba(255,0,0, .2)"
+    backgroundColor: "rgba(255,0,0,.6)"
+  },
+  pressbutton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 200,
+    height: 200,
+    borderRadius: 100
   }
+
 });
