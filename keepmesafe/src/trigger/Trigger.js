@@ -19,6 +19,15 @@ export default class Trigger extends Component {
     };
 
     @autobind
+    async sos(): Promise<void> {
+        try {
+            await this.store.sos();
+        } catch (e) {
+            alert(e.message);
+        }
+    }
+
+    @autobind
     async demo(): Promise<void> {
         try {
             await this.store.demo();
@@ -27,7 +36,7 @@ export default class Trigger extends Component {
         }
     }
 
-    emergency() {
+    emergencies() {
         return alert('¡Presionaste el botón de emergencia!');
     }
 
@@ -54,27 +63,42 @@ export default class Trigger extends Component {
     };
 
     render(): React$Element<*> {
-        
+
+
         let text = 'Waiting..';
+        let timestamp, longitude, latitude = null;
         if (this.state.errorMessage) {
             text = this.state.errorMessage;
         } else if (this.state.location) {
             text = JSON.stringify(this.state.location);
-        }
+            timestamp = JSON.stringify(this.state.location.timestamp);
+            latitude = JSON.stringify(this.state.location.coords.latitude);
+            longitude = JSON.stringify(this.state.location.coords.longitude);
+        } 
 
         console.log(text);
+        console.log(timestamp);
+        console.log(latitude);
+        console.log(longitude);
+        
 
         return <BaseContainer title="Trigger" navigation={this.props.navigation} scrollable>
         {
             <View style={styles.container}>
                 <View  style={styles.button}>
-                    <TouchableHighlight style={styles.pressbutton} onPress={this.emergency}>
+                    <TouchableHighlight style={styles.pressbutton} onPress={this.emergencies}>
                         <Text>PRESS ME!</Text>
                     </TouchableHighlight>
                 </View>
                 
                 <View  style={styles.button}>
                     <TouchableHighlight style={styles.pressbutton} onPress={this.demo}>
+                        <Text>This Sleeper</Text>
+                    </TouchableHighlight>
+                </View>
+
+                <View  style={styles.button}>
+                    <TouchableHighlight style={styles.pressbutton} onPress={this.sos}>
                         <Text>This Sleeper</Text>
                     </TouchableHighlight>
                 </View>
