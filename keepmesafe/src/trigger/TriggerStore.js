@@ -5,6 +5,7 @@ import {debounce} from "throttle-debounce";
 import {Firebase} from "../components";
 import type {Tracks} from "../Model";
 import {Emergency} from "../Model";
+import { LocationHelper } from '../helpers/LocationHelper';
 
 
 export default class TriggerStore {
@@ -24,54 +25,34 @@ export default class TriggerStore {
 
     constructor() {
         Firebase.getUser()
-            .then(user => this.emergency = user.emergency);
-            //.then(user => this.tracks = user.tracks)
-            //.then(() => this.loading = false);
+            .then(user => this.emergency = user.emergency)
+            .then(user => this.tracks = user.tracks)
+            .then(() => this.loading = false);
     }
 
     sleep(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
-/*
-    async sos(){
-        Firebase.getUser().then(user => {
-            let stat : boolean
-            stat = user.emergency.status;
-            console.log(stat);
-            if(stat === false){
-                stat = true;
-                Firebase.userRef.child("emergency/status").set(stat);
-            }else{
-                Firebase.userRef.child("emergency/status").set(false);
-            }
-        }).catch(function(e) {
-            console.log(e); // "oh, no!"
-        })
 
-
-    }*/
-
-    async sos(){
+    async sos(getPosition){
         try{
             const user = await Firebase.getUser()
-            Firebase.userRef.child("emergency/status").set(!user.emergency.status);
-            console.log(!user.emergency.status);
-            if(!user.emergency.status === true){
+            const enableEmergency = !user.emergency.status;
+            Firebase.userRef.child("emergency/status").set(enableEmergency);
+            console.log(enableEmergency);
+            if(enableEmergency){
                 let begin = 0;
-                while(begin <= 70){
+                while(begin <= 10){
                     await this.sleep(1000);
-                    console.log(`Two second later: begin ${begin}`);
+                    const location = await LocationHelper();
+                    console.log(JSON.stringify(location));
+                    Firebase.userRef.child(`emergency/tracking/${location.timestamp}`).set( { lat: location.coords.latitude, long : location.coords.longitude});
                     begin++;
+                    console.log(`${begin} second later...`);
                 }
             }
         }catch(e) {
-                console.log(e); // "oh, no!"
+            console.log(e); // "oh, no!"
         }
-    }
-
-    async demo() {
-        console.log('Taking a break...');
-        await this.sleep(10000);
-        console.log(`A miute later`);
     }
 }

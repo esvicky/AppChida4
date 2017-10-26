@@ -2,9 +2,10 @@
 import autobind from "autobind-decorator";
 import React, { Component } from 'react';
 import { Platform, Text, View, StyleSheet, TouchableHighlight } from 'react-native';
-import {Container, Button, Header, Left, Right, Body, Icon, Title, Spinner} from "native-base";
-import { Constants, Location, Permissions } from 'expo';
+import { Container, Button, Header, Left, Right, Body, Icon, Title, Spinner } from "native-base";
+import { LocationHelper } from '../helpers/LocationHelper';
 import TriggerStore from './TriggerStore';
+import { Constants, Location, Permissions } from 'expo';
 
 import {BaseContainer, Styles, Images} from "../components";
 
@@ -27,15 +28,6 @@ export default class Trigger extends Component {
         }
     }
 
-    @autobind
-    async demo(): Promise<void> {
-        try {
-            await this.store.demo();
-        } catch (e) {
-            alert(e.message);
-        }
-    }
-
     emergencies() {
         return alert('¡Presionaste el botón de emergencia!');
     }
@@ -46,41 +38,17 @@ export default class Trigger extends Component {
                 errorMessage: 'Oops, this will not work on Sketch in an Android emulator. Try it on your device!',
             });
         } else {
-            this._getLocationAsync();
+            LocationHelper()
+                .then(location => {
+                    console.log(JSON.stringify(location))
+                })
+                .catch(e => {
+                    console.log(e)
+                });
         }
     }
 
-    _getLocationAsync = async () => {
-        let { status } = await Permissions.askAsync(Permissions.LOCATION);
-        if (status !== 'granted') {
-            this.setState({
-                errorMessage: 'Permission to access location was denied',
-            });
-        }
-
-        let location = await Location.getCurrentPositionAsync({});
-            this.setState({ location });
-    };
-
-    render(): React$Element<*> {
-
-
-        let text = 'Waiting..';
-        let timestamp, longitude, latitude = null;
-        if (this.state.errorMessage) {
-            text = this.state.errorMessage;
-        } else if (this.state.location) {
-            text = JSON.stringify(this.state.location);
-            timestamp = JSON.stringify(this.state.location.timestamp);
-            latitude = JSON.stringify(this.state.location.coords.latitude);
-            longitude = JSON.stringify(this.state.location.coords.longitude);
-        } 
-
-        console.log(text);
-        console.log(timestamp);
-        console.log(latitude);
-        console.log(longitude);
-        
+    render(): React$Element<*> {      
 
         return <BaseContainer title="Trigger" navigation={this.props.navigation} scrollable>
         {
@@ -88,12 +56,6 @@ export default class Trigger extends Component {
                 <View  style={styles.button}>
                     <TouchableHighlight style={styles.pressbutton} onPress={this.emergencies}>
                         <Text>PRESS ME!</Text>
-                    </TouchableHighlight>
-                </View>
-                
-                <View  style={styles.button}>
-                    <TouchableHighlight style={styles.pressbutton} onPress={this.demo}>
-                        <Text>This Sleeper</Text>
                     </TouchableHighlight>
                 </View>
 
