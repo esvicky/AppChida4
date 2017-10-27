@@ -43,7 +43,6 @@ export default class TriggerStore {
             if(enableEmergency){
                 let begin = 0;
                 const event = await LocationHelper();
-                //Firebase.userRef.child("emergency/events").set({event.timestamp});
                 while(begin <= 10){
                     await this.sleep(1000);
                     const location = await LocationHelper();
