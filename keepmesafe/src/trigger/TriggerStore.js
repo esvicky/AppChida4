@@ -3,7 +3,7 @@ import {observable, computed} from "mobx";
 import {debounce} from "throttle-debounce";
 
 import {Firebase} from "../components";
-import type {Tracks} from "../Model";
+import type {Events, Tracks} from "../Model";
 import {Emergency} from "../Model";
 import { LocationHelper } from '../helpers/LocationHelper';
 
@@ -34,7 +34,7 @@ export default class TriggerStore {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async sos(getPosition){
+    async sos(){
         try{
             const user = await Firebase.getUser()
             const enableEmergency = !user.emergency.status;
@@ -42,11 +42,13 @@ export default class TriggerStore {
             console.log(enableEmergency);
             if(enableEmergency){
                 let begin = 0;
+                const event = await LocationHelper();
+                //Firebase.userRef.child("emergency/events").set({event.timestamp});
                 while(begin <= 10){
                     await this.sleep(1000);
                     const location = await LocationHelper();
                     console.log(JSON.stringify(location));
-                    Firebase.userRef.child(`emergency/tracking/${location.timestamp}`).set( { lat: location.coords.latitude, long : location.coords.longitude});
+                    Firebase.userRef.child(`emergency/events/${event.timestamp}/tracking/${location.timestamp}`).set( { lat: location.coords.latitude, long : location.coords.longitude});
                     begin++;
                     console.log(`${begin} second later...`);
                 }

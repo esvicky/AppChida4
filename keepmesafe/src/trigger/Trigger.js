@@ -1,3 +1,4 @@
+
 // @flow
 import autobind from "autobind-decorator";
 import React, { Component } from 'react';
@@ -28,10 +29,6 @@ export default class Trigger extends Component {
         }
     }
 
-    emergencies() {
-        return alert('¡Presionaste el botón de emergencia!');
-    }
-
     componentWillMount() {
         if (Platform.OS === 'android' && !Constants.isDevice) {
             this.setState({
@@ -53,17 +50,13 @@ export default class Trigger extends Component {
         return <BaseContainer title="Trigger" navigation={this.props.navigation} scrollable>
         {
             <View style={styles.container}>
+
                 <View  style={styles.button}>
-                    <TouchableHighlight style={styles.pressbutton} onPress={this.emergencies}>
+                    <TouchableHighlight style={styles.pressbutton} onPress={this.sos}>
                         <Text>PRESS ME!</Text>
                     </TouchableHighlight>
                 </View>
 
-                <View  style={styles.button}>
-                    <TouchableHighlight style={styles.pressbutton} onPress={this.sos}>
-                        <Text>This Sleeper</Text>
-                    </TouchableHighlight>
-                </View>
             </View>
         }
         </BaseContainer>;

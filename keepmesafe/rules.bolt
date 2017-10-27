@@ -10,6 +10,7 @@ path /police is Police {
 
 type Members extends Member[] {}
 type Tracks extends Track[] {}
+type Events extends Event[] {}
 
 type User {
     emergency: Emergency,
@@ -19,6 +20,10 @@ type User {
 
 type Emergency {
     status: Boolean,
+    events: Events
+}
+
+type Event {
     tracking: Tracks
 }
 
