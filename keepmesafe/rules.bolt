@@ -19,15 +19,21 @@ type User {
 }
 
 type Emergency {
+    read() { true }
+    write() { true }
     status: Boolean,
     events: Events
 }
 
 type Event {
+    read() { true }
+    write() { false }
     tracking: Tracks
 }
 
 type Track {
+    read() { true }
+    write() { false }
     lat: Number,
     long: Number
 }
