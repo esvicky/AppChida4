@@ -56,7 +56,7 @@ export default class CreateStore {
         const {firstName, lastName, momLastName, phone, email, done} = this;
         if (firstName === "") {
             this.loading = false;
-            throw new Error("Nombre requirido");
+            throw new Error("Nombre requerido");
         }
         if (lastName === ""){
             this.loading = false;

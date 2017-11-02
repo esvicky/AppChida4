@@ -73,7 +73,7 @@ class Member extends Component {
         const {onToggle} = this.props;
         this.done = !this.done;
         onToggle(this.done);
-        Alert.alert('Something',null,
+        Alert.alert('Elige la acción que quieres para tu contacto',null,
             [{text: 'Editar', onPress:this.edit},
             {text: 'Eliminar', onPress:this.delete}]);
     }
