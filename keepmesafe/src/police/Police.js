@@ -13,7 +13,7 @@ import variables from "../../native-base-theme/variables/commonColor";
 export default class Police extends Component {
     render(): React$Element<*> {
         const {store} = this.props;
-        return <BaseContainer title="Police" navigation={this.props.navigation} scrollable>
+        return <BaseContainer title="Policía" navigation={this.props.navigation} scrollable>
             {
                 store.police && <View>
                     <View style={[Styles.whiteBg, Styles.center]}>

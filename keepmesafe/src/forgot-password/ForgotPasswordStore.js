@@ -18,7 +18,7 @@ export default class ForgotPasswordStore {
         this.loading = true;
         try {
             if (email === "") {
-                throw new Error("Please provide email address.");
+                throw new Error("Por favor escribe un email.");
             }
             await Firebase.auth.sendPasswordResetEmail(email);
             this.loading = false;

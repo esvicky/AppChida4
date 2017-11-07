@@ -20,7 +20,7 @@ export default class Members extends Component {
 
     render(): React$Element<*> {
         const {members, loading} = this.store;
-        return <BaseContainer title="Members" navigation={this.props.navigation} scrollable>
+        return <BaseContainer title="Miembros" navigation={this.props.navigation} scrollable>
         {
             !loading && <View>
                 <Image source={Images.members} style={Styles.header}>
