@@ -28,7 +28,7 @@ export default class ForgotPassword extends React.Component {
     async submit(): Promise<void> {
         try {
             await this.store.submit();
-            alert("We send you an email so you can reset your password.");
+            alert("Te hemos enviado un email para que puedas recuperar tu contraseña.");
             this.props.navigation.navigate("Login");
         } catch(e) {
             alert(e.message);
@@ -48,7 +48,7 @@ export default class ForgotPassword extends React.Component {
                     inverse
                 />
                 <Button primary full onPress={this.submit}>
-                {this.store.loading ? <Spinner color="white" /> : <Text>Reset Password</Text>}
+                {this.store.loading ? <Spinner color="white" /> : <Text>Recuperar Contraseña</Text>}
                 </Button>
                 <Button transparent full onPress={this.login}>
                     <Small style={{color: "white"}}>Login</Small>

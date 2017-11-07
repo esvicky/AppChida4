@@ -15,7 +15,7 @@ export default class Timeline extends Component {
 
     render(): React$Element<*> {
         const {store} = this.props;
-        return <BaseContainer title="Timeline" navigation={this.props.navigation} scrollable>
+        return <BaseContainer title="Comunidad" navigation={this.props.navigation} scrollable>
         {
             store.user && <View>
                 <Image source={Images.timeline} style={Styles.header}>

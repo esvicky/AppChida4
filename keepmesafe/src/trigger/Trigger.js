@@ -47,7 +47,7 @@ export default class Trigger extends Component {
 
     render(): React$Element<*> {      
 
-        return <BaseContainer title="Trigger" navigation={this.props.navigation} scrollable>
+        return <BaseContainer title="Botón" navigation={this.props.navigation} scrollable>
         {
             <View style={styles.container}>
 
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1,
   },
   paragraph: {
     margin: 24,

@@ -46,7 +46,7 @@ export default class SignUp extends Component {
                             </Button>
                         </Left>
                         <Body>
-                        <Title>Sign Up</Title>
+                        <Title>Regístro Usuario</Title>
                         </Body>
                         <Right/>
                     </Header>

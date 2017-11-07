@@ -21,7 +21,7 @@ export default class Members extends Component {
 
     render(): React$Element<*> {
         const {members, loading} = this.store;
-        return <BaseContainer title="Members" navigation={this.props.navigation} scrollable>
+        return <BaseContainer title="Miembros" navigation={this.props.navigation} scrollable>
         {
             !loading && <View>
                 <Image source={Images.members} style={Styles.header}>
@@ -65,7 +65,7 @@ class Member extends Component {
         const {onToggle} = this.props;
         this.done = !this.done;
         onToggle(this.done);
-        Alert.alert('Something',null,
+        Alert.alert('Elige la acción que quieres para tu contacto',null,
             [{text: 'Editar', onPress:this.edit},
             {text: 'Eliminar', onPress:this.delete}]);
     }

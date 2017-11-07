@@ -13,7 +13,7 @@ import variables from "../../native-base-theme/variables/commonColor";
 export default class Profile extends Component {
     render(): React$Element<*> {
     const {store} = this.props;
-        return <BaseContainer title="Profile" navigation={this.props.navigation} scrollable>
+        return <BaseContainer title="Perfil" navigation={this.props.navigation} scrollable>
         {
             store.user && <View>
                 <View style={[Styles.whiteBg, Styles.center]}>
