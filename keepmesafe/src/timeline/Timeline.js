@@ -6,7 +6,7 @@ import React, {Component} from "react";
 import {StyleSheet, Image, View, Text} from "react-native";
 import {H3} from "native-base";
 
-import {BaseContainer, Styles, Images, Avatar, Member, Task} from "../components";
+import {BaseContainer, Styles, Images, Avatar, Member} from "../components";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
@@ -20,8 +20,8 @@ export default class Timeline extends Component {
             store.user && <View>
                 <Image source={Images.timeline} style={Styles.header}>
                     <View style={[Styles.imgMask, Styles.center, Styles.flexGrow]}>
-                        <H3 style={StyleSheet.flatten(style.heading)}>{"\n\n"}COMUNIDAD</H3>
-                        <Text style={Styles.whiteText}>{store.memberCount} MEMBERS</Text>
+                        <Text style={Styles.whiteText}>AGENDA</Text>
+                        <Text style={Styles.whiteText}>{store.memberCount} MIEMBRO(S)</Text>
                     </View>
                 </Image>
                 {
