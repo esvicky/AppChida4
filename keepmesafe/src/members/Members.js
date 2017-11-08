@@ -6,6 +6,7 @@ import {StyleSheet, Image, View, Text, Alert} from "react-native";
 import {H1, H3, Button, Icon} from "native-base";
 import {observable, action} from "mobx";
 import {observer} from "mobx-react/native";
+import {Member as IMember} from "../Model";
 
 import MemberStore from "./MemberStore";
 
@@ -36,13 +37,7 @@ export default class Members extends Component {
                 {
                     _.map(
                         members,
-                        (member, key) => <Member
-                            key={key}
-                            name={member.name}
-                            phone={member.phone}
-                            email={member.email}
-                            onToggle={done => this.store.toggleItem(key, done)}
-                        />
+                        (member, key) => <Member {...{key, member}} />
                     )
                 }
             </View>
@@ -55,10 +50,7 @@ export default class Members extends Component {
 class Member extends Component {
 
     props: {
-        name: string,
-        phone: string,
-        email: string,
-        onToggle: boolean => void
+        member: IMember
     }
 
     @observable done: string;
