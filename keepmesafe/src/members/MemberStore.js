@@ -65,12 +65,8 @@ export default class MemberStore {
             .then(() => this.loading = false);
     }
 
-    toggleItem(key: string, done: boolean) {
-        Firebase.userRef.child(`members/${key}/done`).set(done);
-    }
-
     deleteMember(key: string) {
-        console.log(key);
+         Firebase.userRef.child(`members/${key}`).remove();
     }
 
     

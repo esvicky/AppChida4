@@ -49,12 +49,17 @@ export default class Members extends Component {
 @observer
 class Member extends Component {
 
+    props: {
+        member: IMember
+    };
+
     delete(){
+        //lamo a la funcion de deleteMember en MemberStore
         alert('Delete member');
     }
 
-    props: {
-        member: IMember
+    edit(){
+        return <EditMember member={this.member};/>;
     }
 
     render(): React$Element<*>  {
@@ -75,6 +80,13 @@ class Member extends Component {
     }
 }
 
+@observer
+class EditMember extends Component {
+    props: {
+        
+    }
+}
+
 
 const style = StyleSheet.create({
     button: {
@@ -84,6 +96,8 @@ const style = StyleSheet.create({
         paddingLeft: variables.contentPadding
     },closeIcon: {
         fontSize: 20,
-        color: "rgba(255, 0, 0, .9)"
+        color: "rgba(255, 0, 0, .9)",
+        height: 75,
+        size: 20
     },
 });
