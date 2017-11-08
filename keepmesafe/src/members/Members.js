@@ -49,49 +49,32 @@ export default class Members extends Component {
 @observer
 class Member extends Component {
 
+    delete(){
+        alert('Delete member');
+    }
+
     props: {
         member: IMember
     }
 
-    @observable done: string;
-
-    componentWillMount() {
-        const {done} = this.props;
-        this.done = !!done; 
-    }
-
-    @autobind @action
-    toggle() {
-        const {onToggle} = this.props;
-        this.done = !this.done;
-        onToggle(this.done);
-        Alert.alert('Elige la acción que quieres para tu contacto',null,
-            [{text: 'Editar', onPress:this.edit},
-            {text: 'Eliminar', onPress:this.delete}]);
-    }
-
-    edit() {
-        console.log('Presiono el botón editar');
-    }
-
-    delete(){
-        console.log('Quiere eliminar al miembro');
-    }
-
     render(): React$Element<*>  {
-        const {name, phone, email} = this.props;
-        const btnStyle ={ backgroundColor: this.done ? variables.brandInfo : variables.lightGray };
+        const {member} = this.props;
+        const {name, email, phone, done} = member;
         return <View style={Styles.listItem}>
+            <Button transparent onPress={this.delete}>
+                <Icon name="ios-close-outline" style={StyleSheet.flatten(style.closeIcon)} />
+            </Button>
             <Button transparent
                 onPress={this.toggle}
-                style={StyleSheet.flatten([Styles.stretch, btnStyle])}>
+                style={StyleSheet.flatten(Styles.stretch)}>
                 <View style={[Styles.center, style.title]}>
-                    <Text style={{ color: this.done ? variables.gray : variables.black }}>{name.split('/').join(' ')}</Text>
+                    <Text style={{ color: variables.gray }}>{name.split('/').join(' ')}</Text>
                 </View>
             </Button>
         </View>;
     }
 }
+
 
 const style = StyleSheet.create({
     button: {
@@ -99,5 +82,8 @@ const style = StyleSheet.create({
     },
     title: {
         paddingLeft: variables.contentPadding
-    }
+    },closeIcon: {
+        fontSize: 20,
+        color: "rgba(255, 0, 0, .9)"
+    },
 });
