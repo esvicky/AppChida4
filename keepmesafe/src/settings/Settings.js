@@ -19,7 +19,7 @@ export default class Settings extends Component {
 
     render(): React$Element<*> {
         const {profile} = this.store;
-        return <BaseContainer title="Settings" navigation={this.props.navigation} scrollable>
+        return <BaseContainer title="Configuraciones" navigation={this.props.navigation} scrollable>
             <View style={[Styles.header, Styles.center, Styles.whiteBg]}>
                 <Avatar size={100} />
             </View>
@@ -29,32 +29,32 @@ export default class Settings extends Component {
                         <Text>GENERAL</Text>
                     </ListItem>
                     <Field
-                        label="Name"
+                        label="Nombre(s)"
                         defaultValue={profile.name.split('/')[0]}
                         onChange={value => this.store.setName(value)}
                     />
                     <Field
-                        label="Last Name"
+                        label="Apellido Paterno"
                         defaultValue={profile.name.split('/')[1]}
                         onChange={value => this.store.setLastName(value)}
                     />
                     <Field
-                        label="Mom's Last Name"
+                        label="Apellido Materno"
                         defaultValue={profile.name.split('/')[2]}
                         onChange={value => this.store.setSecondLastName(value)}
                     />
                     <Field
-                        label="Phone"
+                        label="Teléfono"
                         defaultValue={profile.phone}
                         keyboardType="phone-pad"
                         onChange={value => this.store.setPhone(value)}
                     />
                     <ListItem itemDivider>
-                        <Text>NOTIFICATIONS</Text>
+                        <Text>NOTIFICACIONES</Text>
                     </ListItem>
                     <ListItem>
                         <Body>
-                        <Text>Email Notification</Text>
+                        <Text>Notificación de Email</Text>
                         </Body>
                         <Right>
                             <SettingsSwitch
@@ -65,7 +65,7 @@ export default class Settings extends Component {
                     </ListItem>
                     <ListItem last>
                         <Body>
-                        <Text>Phone Notification</Text>
+                        <Text>Notificación de Teléfono</Text>
                         </Body>
                         <Right>
                             <SettingsSwitch

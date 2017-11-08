@@ -31,7 +31,7 @@ export default class ForgotPassword extends React.Component {
             alert("Te hemos enviado un email para que puedas recuperar tu contraseña.");
             this.props.navigation.navigate("Login");
         } catch(e) {
-            alert(e.message);
+            alert("El Email que ingresaste es incorrecto");
         }
     }
 
@@ -51,7 +51,7 @@ export default class ForgotPassword extends React.Component {
                 {this.store.loading ? <Spinner color="white" /> : <Text>Recuperar Contraseña</Text>}
                 </Button>
                 <Button transparent full onPress={this.login}>
-                    <Small style={{color: "white"}}>Login</Small>
+                    <Small style={{color: "white"}}>Iniciar sesión</Small>
                 </Button>
             </View>
         </Image>;

@@ -35,6 +35,7 @@ export default class Create extends Component {
             <Button primary full onPress={this.save}>
                 {
                     this.store.loading ? <Spinner color="white" /> : <Text style={style.text}>MIEMBRO NUEVO</Text>
+
                 }
             </Button>
         );
@@ -66,7 +67,7 @@ export default class Create extends Component {
                 onChange={momLastName => this.store.momLastName = momLastName}
             />
             <Field
-                label="Teléfono (a 8 dígitos)"
+                label="Teléfono (a 10 dígitos)"
                 autoCorrect={false}
                 autoCapitalize="none"
                 keyboardType="phone-pad"

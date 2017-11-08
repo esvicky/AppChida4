@@ -31,7 +31,7 @@ export default class LoginStore {
             this.loading = false;
         } catch(e) {
             this.loading = false;
-            throw e;
+            throw new Error("Usuario o contraseña incorrectos. Por favor verifica tus datos");
         }
     }
 }

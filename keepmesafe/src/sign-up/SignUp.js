@@ -31,7 +31,7 @@ export default class SignUp extends Component {
         try {
             await this.store.signIn();
         } catch (e) {
-            alert(e.message);
+            alert("El Email que ingresaste ya ha sido usado en otra cuenta o no tiene el formato adecuado. Por ingresa otra dirección o verifica tu cuenta.");
         }
     }
 
@@ -46,7 +46,7 @@ export default class SignUp extends Component {
                             </Button>
                         </Left>
                         <Body>
-                        <Title>Regístro Usuario</Title>
+                        <Title>Registro Usuario</Title>
                         </Body>
                         <Right/>
                     </Header>
