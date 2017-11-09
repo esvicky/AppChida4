@@ -1,6 +1,5 @@
 // @flow
 import {observable, computed} from "mobx";
-import {observer} from "mobx-react/native";
 import {debounce} from "throttle-debounce";
 import {Alert} from "react-native";
 import autobind from "autobind-decorator";
@@ -8,7 +7,6 @@ import autobind from "autobind-decorator";
 import type {Members} from "../Model";
 import {Firebase} from "../components";
 
-@observer
 export default class MemberStore {
 
     @observable _loading: boolean = true;
@@ -83,7 +81,6 @@ export default class MemberStore {
                   { cancelable: false }
                 )
             } 
-            this.props.navigation.navigate("Comunidad");
         } catch(e) {
             alert(e.message);
         }
