@@ -22,10 +22,10 @@ export default class LoginStore {
         this.loading = true;
         try {
             if (email === "") {
-                throw new Error("Por favor ingresa un correo.");
+                throw new Error("Email requerido.");
             }
             if (password === "") {
-                throw new Error("Por favor ingresa una contraseña.");
+                throw new Error("Contraseña requerida.");
             }
             await Firebase.auth.signInWithEmailAndPassword(email, password);
             this.loading = false;

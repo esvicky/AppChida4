@@ -75,7 +75,7 @@ export default class MemberStore {
                   'Eliminar',
                   '¿Estás seguro de eliminar a 1 miembro de tu comunidad?',
                   [
-                    {text: 'Cancel', onPress: () => console.log('Cancel Pressed')},
+                    {text: 'Cancelar', onPress: () => console.log('Cancel Pressed')},
                     {text: 'OK', onPress: () => Firebase.userRef.child(`members/${key}`).remove()},
                   ],
                   { cancelable: false }

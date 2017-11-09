@@ -44,19 +44,19 @@ export default class SignUpStore {
         this.loading = true;
         try {
             if (name === "") {
-                throw new Error("Ingresa un nombre.");
+                throw new Error("Nombre requerido.");
             }
             if (lastName === ""){
-                throw new Error("Ingresa tu apellido paterno.");
+                throw new Error("Apellido paterno requerido.");
             }
             if (momLastName === ""){
-                throw new Error("Ingresa tu apellido materno.");
+                throw new Error("Apellido materno requerido.");
             }
             if (email === "") {
-                throw new Error("Ingresa tu email.");
+                throw new Error("Email requerido.");
             }
             if (password === "") {
-                throw new Error("Ingresa una contraseña.");
+                throw new Error("Contraseña requerida.");
             }
             if (phone === "") {
                 this.loading = false;
