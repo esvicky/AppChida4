@@ -20,8 +20,7 @@ export default class Timeline extends Component {
             store.user && <View>
                 <Image source={Images.timeline} style={Styles.header}>
                     <View style={[Styles.imgMask, Styles.center, Styles.flexGrow]}>
-                        <Text style={Styles.whiteText}>AGENDA</Text>
-                        <Text style={Styles.whiteText}>{store.memberCount} MIEMBRO(S)</Text>
+                        <Text style={StyleSheet.flatten([Styles.whiteText, style.tittle])}>{'\n\n\n\n'}AGENDA</Text>
                     </View>
                 </Image>
                 {
@@ -37,5 +36,8 @@ const style = StyleSheet.create({
     heading: {
         marginTop: variables.contentPadding * 2,
         color: "white"
-    }   
+    },
+    tittle: {
+        fontSize: 30
+    }
 });

@@ -26,7 +26,7 @@ export default class Members extends Component {
             !loading && <View>
                 <Image source={Images.members} style={Styles.header}>
                     <View style={[Styles.center, Styles.flexGrow, Styles.headerMask]}>
-                        <H1 style={{ color: "white" }}>EDITA TUS MIEMBROS</H1>
+                        <H1 style={{ color: "white" }}>EDITA TU COMUNIDAD</H1>
                     </View>
                 </Image>
                 {
@@ -59,21 +59,20 @@ class Member extends Component {
     }
 
     edit(){
-        return <EditMember member={this.member};/>;
+        alert(JSON.stringify(this.props));
     }
 
     render(): React$Element<*>  {
         const {member} = this.props;
         const {name, email, phone, done} = member;
-        return <View style={Styles.listItem}>
+        return <View style={StyleSheet.flatten(Styles.listItem)}>
             <Button transparent onPress={this.delete}>
-                <Icon name="ios-close-outline" style={StyleSheet.flatten(style.closeIcon)} />
+                <Icon name="ios-close-outline" style={StyleSheet.flatten([Styles.center, style.closeIcon])} />
             </Button>
             <Button transparent
-                onPress={this.toggle}
-                style={StyleSheet.flatten(Styles.stretch)}>
-                <View style={[Styles.center, style.title]}>
-                    <Text style={{ color: variables.gray }}>{name.split('/').join(' ')}</Text>
+                onPress={this.edit}>
+                <View style={StyleSheet.flatten([Styles.center, style.title])}>
+                    <Text style={{ color: variables.black }}>{name.split('/').join(' ').toUpperCase()}</Text>
                 </View>
             </Button>
         </View>;
@@ -89,15 +88,11 @@ class EditMember extends Component {
 
 
 const style = StyleSheet.create({
-    button: {
-        height: 75, width: 75, borderRadius: 0
-    },
     title: {
-        paddingLeft: variables.contentPadding
+        padding: variables.contentPadding
     },closeIcon: {
-        fontSize: 20,
-        color: "rgba(255, 0, 0, .9)",
-        height: 75,
-        size: 20
+        fontSize: 50,
+        color: "rgba(255, 0, 0, .6)",
+        padding: variables.contentPadding
     },
 });
