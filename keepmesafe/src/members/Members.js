@@ -37,7 +37,10 @@ export default class Members extends Component {
                 {
                     _.map(
                         members,
-                        (member, key) => <Member {...{key, member}} />
+                        (member, key) => <Member 
+                            key={key}
+                            member={member}
+                            onDelete={done =>this.store.deleteMember(key,done)} />
                     )
                 }
             </View>
@@ -50,12 +53,17 @@ export default class Members extends Component {
 class Member extends Component {
 
     props: {
-        member: IMember
+        member: IMember,
+        onDelete: boolean => void
     };
 
+    @observable done: boolean;
+
+    @autobind @action
     delete(){
-        //lamo a la funcion de deleteMember en MemberStore
-        alert('Delete member');
+        const {onDelete} = this.props;
+        this.done = true;
+        onDelete(this.done);
     }
 
     edit(){

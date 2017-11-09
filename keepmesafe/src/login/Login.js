@@ -50,7 +50,6 @@ export default class Login extends React.Component {
                             <View>
                                 <Mark />
                                 <H1 style={StyleSheet.flatten(style.title)}>KEEP ME SAFE</H1>
-                                <H2 style={StyleSheet.flatten(style.title)}>Bienvenido</H2>
                             </View>
                         </View>
                         <View style={style.blur}>

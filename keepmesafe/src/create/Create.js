@@ -24,7 +24,7 @@ export default class Create extends Component {
     async save(): Promise<void> {
         try {
             await this.store.save();
-            this.props.navigation.navigate("Members");
+            this.props.navigation.navigate("Comunidad");
         } catch(e) {
             alert(e.message);
         }

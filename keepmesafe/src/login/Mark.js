@@ -23,7 +23,7 @@ export default class Mark extends React.Component {
             <View style={[getStyle(180), { borderColor: "rgba(255, 255, 255, .5)", borderWidth: 1 }]}>
                 <View style={[getStyle(150), { borderColor: "white", borderWidth: 1 }]}>
                     <View style={[getStyle(120), { backgroundColor: commonColor.white }]}>
-                        <Image source={Images.mark} style={{height: 120, width: 120 }} />
+                        <Image source={Images.mark} style={{height: 100, width: 100 }} />
                     </View>
                 </View>
             </View>

@@ -80,7 +80,7 @@ export default class CreateStore {
             this.loading = false;
             throw new Error("Email inválido");
         }
-        const member: Member = {name: `${firstName}/${lastName}/${momLastName}`, phone , email, done:true};
+        const member: Member = {name: `${firstName}/${lastName}/${momLastName}`, phone , email, done:false};
         await Firebase.userRef.child("members").push(member);
         this.loading = false;
     }
