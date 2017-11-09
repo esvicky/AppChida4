@@ -3,7 +3,7 @@ import autobind from "autobind-decorator";
 import React from "react";
 import {observer} from "mobx-react/native";
 import {View, Image, StyleSheet, ScrollView, KeyboardAvoidingView} from "react-native";
-import {H1, Container, Button, Text, Spinner} from "native-base";
+import {H1, H2, Container, Button, Text, Spinner} from "native-base";
 import type { NavigationScreenProp } from "react-navigation/src/TypeDefinition";
 
 import LoginStore from "./LoginStore";
@@ -49,7 +49,8 @@ export default class Login extends React.Component {
                         <View style={style.logo}>
                             <View>
                                 <Mark />
-                                <H1 style={StyleSheet.flatten(style.title)}>Bienvenido</H1>
+                                <H1 style={StyleSheet.flatten(style.title)}>KEEP ME SAFE</H1>
+                                <H2 style={StyleSheet.flatten(style.title)}>Bienvenido</H2>
                             </View>
                         </View>
                         <View style={style.blur}>

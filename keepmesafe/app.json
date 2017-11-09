@@ -6,7 +6,7 @@
         "icon": "./appkms.png",
         "primaryColor": "#50D2C2",
         "loading": {
-            "backgroundImage": "./loading2.png",
+            "backgroundImage": "./loading.png",
             "hideExponentText": true
         },
         "androidStatusBarColor": "#50D2C2",
