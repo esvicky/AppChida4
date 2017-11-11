@@ -53,7 +53,7 @@ export default class Trigger extends Component {
 
                 <View  style={styles.button}>
                     <TouchableHighlight style={styles.pressbutton} onPress={this.sos}>
-                        <Text>PRESS ME!</Text>
+                        <Text>ACTIVA EL BOTÓN!</Text>
                     </TouchableHighlight>
                 </View>
 
