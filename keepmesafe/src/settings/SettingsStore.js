@@ -16,7 +16,7 @@ export default class SettingsStore {
         Firebase.getUser().then(user => {
             let [name, lastName, secondLastName] = user.profile.name.split('/');
             name = newName;
-            console.log(name);
+            //console.log(name);
             var newFullName = [name, lastName, secondLastName].join('/');
             Firebase.userRef.child("profile/name").set(newFullName);
         }).catch(function(e) {
@@ -38,7 +38,7 @@ export default class SettingsStore {
 
     setSecondLastName = debounce(1000, (newSecondLastName: string) => {
         Firebase.getUser().then(user => {
-            console.log(user);
+            //console.log(user);
             let [name, lastName, secondLastName] = user.profile.name.split('/');
             secondLastName = newSecondLastName;
             var newFullName = [name, lastName, secondLastName].join('/');
@@ -56,14 +56,13 @@ export default class SettingsStore {
 
     setPhone = debounce(1000, (phone: string) => {
         Firebase.getUser().then(user => {
-            console.log(user);
+            //console.log(user);
             let phone1 = user.profile.phone;
-            console.log(phone1);
+            //console.log(phone1);
             if(!this.validatePhone(phone)){
-                Firebase.userRef.child("profile/phone").set(phone1);
                 try {
                     alert('Número de teléfono inválido');
-                    this.props.navigation.navigate("Profile");
+                    Firebase.userRef.child("profile/phone").set(phone1);
                 } catch(e) {
                     alert(e.message);
                 }

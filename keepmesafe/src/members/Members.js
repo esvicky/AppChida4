@@ -39,8 +39,11 @@ export default class Members extends Component {
                         members,
                         (member, key) => <Member 
                             key={key}
+                            id={key}
                             member={member}
-                            onDelete={done =>this.store.deleteMember(key,done)} />
+                            onDelete={done =>this.store.deleteMember(key,done)} 
+                            navigation= {this.props.navigation}
+                            />
                     )
                 }
             </View>
@@ -52,11 +55,6 @@ export default class Members extends Component {
 @observer
 class Member extends Component {
 
-    props: {
-        member: IMember,
-        onDelete: boolean => void
-    };
-
     @observable done: boolean;
 
     @autobind @action
@@ -66,19 +64,21 @@ class Member extends Component {
         onDelete(this.done);
     }
 
-    edit(){
-        alert(JSON.stringify(this.props));
+    @autobind
+    edit(member, id){
+        //console.log(JSON.stringify(this.props.navigation));
+        this.props.navigation.navigate("Create", {member, id});
     }
 
     render(): React$Element<*>  {
-        const {member} = this.props;
+        const {member, id} = this.props;
         const {name, email, phone, done} = member;
         return <View style={StyleSheet.flatten(Styles.listItem)}>
             <Button transparent onPress={this.delete}>
                 <Icon name="ios-close-outline" style={StyleSheet.flatten([Styles.center, style.closeIcon])} />
             </Button>
             <Button transparent
-                onPress={this.edit}>
+                onPress={e => this.edit(member,id)}>
                 <View style={StyleSheet.flatten([Styles.center, style.title])}>
                     <Text style={{ color: variables.black }}>{name.split('/').join(' ').toUpperCase()}</Text>
                 </View>
@@ -86,14 +86,6 @@ class Member extends Component {
         </View>;
     }
 }
-
-@observer
-class EditMember extends Component {
-    props: {
-        
-    }
-}
-
 
 const style = StyleSheet.create({
     title: {

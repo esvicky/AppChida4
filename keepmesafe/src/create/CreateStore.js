@@ -51,6 +51,40 @@ export default class CreateStore {
         return re.test(newPhone);
     };
 
+    async update(key: string): Promise<void> {
+        const {firstName, lastName, momLastName, phone, email} = this;
+        if (firstName === "") {
+            this.loading = false;
+            throw new Error("Nombre requerido");
+        }
+        if (lastName === ""){
+            this.loading = false;
+            throw new Error("Apellido Paterno requerido");
+        }
+        if (momLastName === ""){
+            this.loading = false;
+            throw new Error("Apellido Materno requerido");
+        }
+        if (phone === "") {
+            this.loading = false;
+            throw new Error("Número de teléfono requerido");
+        }else if(!this.validatePhone(phone)){
+            this.loading = false;
+            throw new Error("Número de teléfono inválido");
+        }
+        if (email === "") {
+            this.loading = false;
+            throw new Error("Email requerido");
+        }else if (!this.validateEmail(email)){
+            this.loading = false;
+            throw new Error("Email inválido");
+        }
+        const member: Member = {name: `${firstName}/${lastName}/${momLastName}`, phone , email, done:false};
+        //console.log(`members/${key}`);
+        await Firebase.userRef.child(`members/${key}`).set(member);
+        this.loading = false;
+    }
+
     async save(): Promise<void> {
         this.loading = true;
         const {firstName, lastName, momLastName, phone, email, done} = this;

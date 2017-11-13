@@ -18,48 +18,6 @@ export default class MemberStore {
     @computed get loading(): boolean { return this._loading; }
     set loading(loading: boolean) { this._loading = loading; }
 
-    setName = debounce(1000, (key: string, newName: string) => {
-        Firebase.getUser().then(user => {
-            let [name, lastName, secondLastName] = user.members.key.name.split('/');
-            name = newName;
-            console.log(name);
-            var newFullName = [name, lastName, secondLastName].join('/');
-            Firebase.userRef.child(`members/${key}/name`).set(newFullName);
-        }).catch(function(e) {
-            console.log(e); // "oh, no!"
-        });
-        
-    });
-
-    setLastName = debounce(1000, (key: string, newLastName: string) => {
-        Firebase.getUser().then(user => {
-            let [name, lastName, secondLastName] = user.members.key.name.split('/');
-            lastName = newLastName;
-            var newFullName = [name, lastName, secondLastName].join('/');
-            Firebase.userRef.child(`members/${key}/name`).set(newFullName);  
-        }).catch(function(e) {
-            console.log(e); // "oh, no!"
-        });      
-    });
-
-    setSecondLastName = debounce(1000, (key: string, newSecondLastName: string) => {
-        Firebase.getUser().then(user => {
-            let [name, lastName, secondLastName] = user.members.key.name.split('/');
-            secondLastName = newSecondLastName;
-            var newFullName = [name, lastName, secondLastName].join('/');
-            Firebase.userRef.child(`members/${key}/name`).set(newFullName);   
-        }).catch(function(e) {
-            console.error(e); // "oh, no!"
-        })               
-    });
-
-    setPhone = debounce(1000, (key: string, phone: string) => {
-        Firebase.userRef.child(`members/${key}/phone`).set(phone);
-    });
-
-    setEmail = debounce(1000, (key: string, email: string) => {
-        Firebase.userRef.child(`members/${key}/email`).set(email);
-    });
 
     constructor() {
         Firebase.getUser()
@@ -76,7 +34,11 @@ export default class MemberStore {
                   '¿Estás seguro de eliminar a 1 miembro de tu comunidad?',
                   [
                     {text: 'Cancelar', onPress: () => console.log('Cancel Pressed')},
-                    {text: 'OK', onPress: () => Firebase.userRef.child(`members/${key}`).remove()},
+                    {text: 'OK', onPress: () => {
+                        Firebase.userRef.child(`members/${key}`).remove();
+                        const {[key]:deletedKey, ...mem} = this.members;
+                        this.members = mem;                     
+                    }},
                   ],
                   { cancelable: false }
                 )

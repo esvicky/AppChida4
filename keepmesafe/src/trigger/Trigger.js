@@ -2,6 +2,8 @@
 // @flow
 import autobind from "autobind-decorator";
 import React, { Component } from 'react';
+import {observable, action, computed} from "mobx";
+import {observer} from "mobx-react/native";
 import { Platform, Text, View, StyleSheet, TouchableHighlight } from 'react-native';
 import { Container, Button, Header, Left, Right, Body, Icon, Title, Spinner } from "native-base";
 import { LocationHelper } from '../helpers/LocationHelper';
@@ -12,17 +14,20 @@ import {BaseContainer, Styles, Images} from "../components";
 
 import variables from "../../native-base-theme/variables/commonColor";
 
+@observer
 export default class Trigger extends Component {
-    store = new TriggerStore();
+    
 
     state = {
         location: null,
         errorMessage: null,
     };
 
+
     @autobind
     async sos(): Promise<void> {
         try {
+            this.status = !this.status;
             await this.store.sos();
         } catch (e) {
             alert(e.message);
@@ -44,22 +49,37 @@ export default class Trigger extends Component {
                 });
         }
     }
+    @observable _enableEmergency: boolean;
+    @computed get enableEmergency(): boolean { return this._enableEmergency; }
+    set enableEmergency(enableEmergency: boolean) { this._enableEmergency = enableEmergency; }
+
+    constructor(){
+        super();
+        this.store = new TriggerStore();
+        this.store.builder().then(s=>{
+            this.enableEmergency = this.store.enableEmergency;
+            if(this.enableEmergency) this.store.monitored();
+        });
+        
+    }
 
     render(): React$Element<*> {      
-
-        return <BaseContainer title="Botón" navigation={this.props.navigation} scrollable>
+        //const {enableEmergency} = this.store;
+        console.log(`enableEmergency ${this.enableEmergency}`);
+        return (<BaseContainer title="Botón" navigation={this.props.navigation} scrollable>
         {
             <View style={styles.container}>
-
-                <View  style={styles.button}>
-                    <TouchableHighlight style={styles.pressbutton} onPress={this.sos}>
-                        <Text>ACTIVA EL BOTÓN!</Text>
-                    </TouchableHighlight>
-                </View>
-
+                <TouchableHighlight 
+                    style={ this.enableEmergency ? styles.pressed : styles.unpressed } 
+                      onPress={e => {
+                        this.sos();
+                        this.enableEmergency = !this.enableEmergency;
+                    }}>
+                    <Text>{this.enableEmergency ? '¡EMERGENCIA ACTIVA!':'EMERGENCIA INACTIVA'}</Text>
+                </TouchableHighlight>
             </View>
         }
-        </BaseContainer>;
+        </BaseContainer>);
     }
 }
 
@@ -69,25 +89,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
-  paragraph: {
-    margin: 24,
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  button: {
+  pressed: {
+    alignItems: 'center',
+    justifyContent: 'center',
     width: 200,
     height: 200,
     borderRadius: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
     backgroundColor: "rgba(255,0,0,.6)"
   },
-  pressbutton: {
+  unpressed: {
     alignItems: 'center',
     justifyContent: 'center',
     width: 200,
     height: 200,
-    borderRadius: 100
+    borderRadius: 100,
+    backgroundColor: "rgba(0,255,0,.6)"
   }
 
 });
